@@ -1,0 +1,75 @@
+---
+layout: default
+---
+
+Buenas! En este sitio vas a encontrar una pequeña guía para quienes inicien en el desarrollo de aplicaciones de consola en Java.
+
+# Contenido
+
+- [Introducción a Java](./content/introduccion-a-java.html)
+  - ¿Qué es Java?
+  - ¿Cómo funciona?
+  - Programación orientada a objetos (POO)
+- [Conceptos básicos](./content/conceptos-basicos.html)
+  - Introducción
+  - Variables
+    - Declaración
+    - Variables y constantes
+  - Tipos de datos primitivos
+    - Números enteros
+      - byte, short, int y long
+    - Números con decimales
+      - float y double
+    - Valores de verdad
+      - boolean
+    - Caracteres
+      - char
+  - Literales
+    - De números enteros
+    - De números decimales
+    - De caracteres y cadenas
+  - Contador
+  - Acumulador
+- [Operadores](./content/operadores.html)
+  - De asignación
+  - Aritméticos
+  - Unarios y ternarios
+  - De igualdad y relacionales
+  - Lógicos
+- [Estructuras](./content/estructuras.html)
+  - De decisión
+    - if - else
+    - switch
+  - De iteración (bucles)
+    - while
+    - do-while
+    - for
+- [Métodos / funciones](./content/metodos.html)
+  - ¿Cómo definir un método/función? 
+  - Parámetros
+  - Sobrecarga
+- [Clases](./content/clases.html)
+  - Definición de clase personalizada
+  - Métodos y atributos estáticos
+  - Modificadores de acceso
+  - Objetos
+  - Garbage collector
+  - enum
+- [Entrada y salida por consola](./content/entrada-y-salida-por-consola.html)
+  - Scanner
+  - println
+- [Arrays](./content/arrays.html)
+  - De una dimensión (unidimensional)
+  - De mas de una dimensión (multidimensional)
+  - Operaciones con arrays
+- [Clases Wrapper](./content/clases-wrapper.html)
+  - Byte
+  - Short
+  - Integer
+  - Long
+  - Boolean
+  - Float
+  - Double
+  - Character
+- [Clases útiles](./content/clases-utiles.html)
+  - Math
