@@ -4,4 +4,5 @@ show_downloads: false
 show_github_repo: false
 lang: es
 google_analytics:
+google_gtm: G-01M2272H7P
 theme: jekyll-theme-hacker
