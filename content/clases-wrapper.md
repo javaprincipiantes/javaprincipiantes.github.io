@@ -48,13 +48,13 @@ String numeroComoString = numeroByteWrapper.toString(); // Devuelve el contenido
 boolean sonIguales = numeroByteWrapper.equals(numeroByte); // Permite conocer si el contenido de la variable es igual al de otra variable byte
 
 // Constantes estáticas de utilidad
-byte maximoValor = Byte.MAX_VALUE;
-byte minimoValor = Byte.MIN_VALUE;
+byte maximoValor = Byte.MAX_VALUE; // Posee el máximo valor para el tipo de dato Byte
+byte minimoValor = Byte.MIN_VALUE;// Posee el mínimo valor para el tipo de dato Byte
 
 // Métodos estáticos de utilidad
-byte numeroConvertidoDesdeString = Byte.parseByte(numeroComoString);
-numeroComoString = Byte.toString(numeroByte);
-numeroByteWrapper = Byte.valueOf(numeroComoString);
+byte numeroConvertidoDesdeString = Byte.parseByte(numeroComoString); // Devuelve el contenido de la variable String en el argumento como byte (primitivo)
+numeroComoString = Byte.toString(numeroByte); // Devuelve el contenido de la variable en el argumento byte como un nuevo objeto String
+numeroByteWrapper = Byte.valueOf(numeroComoString); // Devuelve el contenido de la variable en el argumento como un nuevo objeto Byte
 ```
 
 [Volver](../)
