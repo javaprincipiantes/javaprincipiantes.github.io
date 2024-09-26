@@ -56,7 +56,7 @@ Son los operadores que sólo necesitan un operando para funcionar.
 | +        | Indicar que un número es positivo                          |
 | -        | Indicar que un número es negativo                          |
 | ++       | Incrementar el valor de una variable en 1                  |
-| --       | Decrementar el valor de una variable en 1                  |
+| \-\-     | Decrementar el valor de una variable en 1                  |
 | !        | Invertir el valor boolean de una variable de tipo boolean  |
 
 ```java
@@ -114,7 +114,7 @@ Son los operadores que nos permiten evaluar más de una expresión booleana.
 | Operador   | Descripción                  |
 |:-----------|:-----------------------------|
 | &&         | Operador condicional AND (y) |
-| ||         | Operador condicional OR (o)  |
+| \|\|       | Operador condicional OR (o)  |
 | ?:         | Operador ternario            |
 | instanceof | Operador instanceof          |
 
