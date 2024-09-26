@@ -73,3 +73,4 @@ Buenas! En este sitio vas a encontrar una pequeña guía para quienes inicien en
   - Boolean
 - [Clases útiles](./content/clases-utiles.html)
   - Math
+  - String
