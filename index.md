@@ -67,9 +67,9 @@ Buenas! En este sitio vas a encontrar una pequeña guía para quienes inicien en
   - Short
   - Integer
   - Long
-  - Boolean
   - Float
   - Double
   - Character
+  - Boolean
 - [Clases útiles](./content/clases-utiles.html)
   - Math
