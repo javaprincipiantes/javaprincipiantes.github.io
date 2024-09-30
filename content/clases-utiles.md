@@ -49,7 +49,7 @@ double base = 2;
 double exponente = 3;
 double potencia = Math.pow(base, exponente); // Devuelve 8. Eleva 2 al cubo
 
-// Número aleatorio entre dos cotas (incluyéndolas)
+// Número entero aleatorio entre dos cotas (incluyéndolas)
 int minimo = 1;
 int maximo = 10;
 int numeroAleatorioEntreUnoYDiezInclusive =  (int)(Math.random() * maximo) + minimo;
@@ -57,7 +57,7 @@ int numeroAleatorioEntreUnoYDiezInclusive =  (int)(Math.random() * maximo) + min
 
 ## String
 
-Esta clase contiene métodos estáticos útiles y métodos posibles de utilizar con un objeto String
+Esta clase contiene métodos estáticos útiles y métodos posibles de utilizar con un objeto String.
 
 ```java
 String texto = String.join("-", "Java", "es", "cool"); // Devuelve "Java-es-cool". El guión es el caracter que se usará para unir las palabras
@@ -80,6 +80,18 @@ boolean igualIgnorandoMayusculasOMinusculas = texto.equals("Java"); // Devuelve 
 texto = "     Java      ";
 texto = texto.trim(); // Devuelve "Java" sin espacios al inicio y el final del String
 String[] palabras = texto.split(" "); // Devuelve un array de String con las palabras separadas donde se encuentra un espacio
+```
+
+## Random
+
+Esta clase contiene métodos útiles para generar números aleatorios.
+
+```java
+// Obtener un número entero aleatorio entre dos números (incluyéndolos)
+int minimo = 1;
+int maximo = 10;
+Random random = new Random();
+int number = random.nextInt((maximo - minimo) + 1) + minimo;
 ```
 
 [Volver](../)
