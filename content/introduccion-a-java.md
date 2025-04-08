@@ -41,7 +41,7 @@ Agrupación de datos, permiso o restricción de acceso a los mismos.
 
 #### [Polimorfismo](https://es.wikipedia.org/wiki/Polimorfismo_(inform%C3%A1tica))
 
-Posibilida de enviar mensajes sintácticamente iguales a objetos de tipos distintos.
+Posibilidad de enviar mensajes sintácticamente iguales a objetos de tipos distintos.
 
 #### [Herencia](https://es.wikipedia.org/wiki/Herencia_(inform%C3%A1tica))
 
