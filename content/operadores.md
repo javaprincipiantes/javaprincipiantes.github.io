@@ -6,87 +6,108 @@ layout: default
 
 # Operadores
 
-Los operadores son caracteres que nos permiten realizar diversas operaciones, así como también, manipular los datos en las variables.
+Los operadores son símbolos que nos permiten realizar diversas operaciones, así como también manipular los datos en las variables.
 
 ## Operadores de asignación
 
-Para asignar un valor a una variable o constante, debemos utilizar el operador igual (=).
-El valor presente a la derecha del igual, será asignado como contenido a la variable definida a la izquierda del igual.
-
+Para asignar un valor a una variable o constante debemos utilizar el operador igual (=).
+El valor presente a la derecha del igual será asignado como contenido a la variable definida a la izquierda del igual.
 
 ```java
-// Operador igual para asignar la palabra Firulais a la variable nombre.
+// Operador igual para asignar la palabra Firulais a la variable nombre
 
 String nombre = "Firulais";
 ```
 
-> **Importante:** Luego de definir una variable, no es válido repetir el tipo de dato en caso de querer cambiar el contenido de la misma.
+> **Importante:** el tipo de dato se escribe una sola vez, cuando declaramos la variable. Si más adelante queremos cambiar su contenido, no debemos repetirlo.
 
 ```java
 String nombre = "Firulais";
-nombre = "Javier"; // Asignación a variable definida anteriormente
+nombre = "Javier"; // Asignación a una variable declarada anteriormente
 ```
+
+Cada operador aritmético tiene además una forma abreviada de asignación (`+=`, `-=`, `*=`, `/=`, `%=`). Ver [formas abreviadas](./conceptos-basicos.html#formas-abreviadas-de-los-operadores-aritméticos).
 
 ## Operadores aritméticos
 
-Son operadores que nos permite realizar operaciones aritméticas como la suma, resta, multiplicación, división y el cálculo del resto.
+Son operadores que nos permiten realizar operaciones aritméticas como la suma, la resta, la multiplicación, la división y el cálculo del resto.
 
 | Operador | Función                                                                            |
 |:---------|:-----------------------------------------------------------------------------------|
-| +        | Sumar dos números. En caso de que las variables sean de tipo String, las concatena |
+| +        | Sumar dos números. En caso de que alguno de los operandos sea un String, los concatena |
 | -        | Restar dos números                                                                 |
 | *        | Multiplicar dos números                                                            |
 | /        | Dividir dos números                                                                |
 | %        | Obtener el resto de la división de dos números                                     |
 
 ```java
-// Operaciones asignadas a variables.
+// Operaciones asignadas a variables
 
-float precio = 1000 + 500; // valor asignado: 1500
-int edad = 2024 - 2000; // Valor asignado: 24
-int resto = 10 / 2; // Valor asignado: 0
+float precio = 1000 + 500;   // Valor asignado: 1500
+int edad = 2024 - 2000;      // Valor asignado: 24
+int total = 12 * 3;          // Valor asignado: 36
+int mitad = 10 / 2;          // Valor asignado: 5
+int resto = 10 % 3;          // Valor asignado: 1 (10 dividido 3 da 3, y sobra 1)
+```
+
+> **Importante: la división entre enteros es entera.** Si los dos operandos son de un tipo entero (`byte`, `short`, `int`, `long`), el resultado también es entero y los decimales se descartan, aunque el resultado se asigne a una variable con decimales.
+
+```java
+int resultadoEntero = 5 / 2;       // Valor asignado: 2, no 2.5
+double resultadoMalCalculado = 5 / 2;   // Valor asignado: 2.0. La división ya se resolvió entre enteros
+double resultadoCorrecto = 5.0 / 2;     // Valor asignado: 2.5. Al menos uno de los operandos tiene decimales
+```
+
+El operador `%` (resto o módulo) es muy útil para saber si un número es múltiplo de otro:
+
+```java
+int numero = 8;
+boolean esPar = numero % 2 == 0; // true, porque el resto de dividir 8 por 2 es cero
 ```
 
 ## Operadores unarios y ternarios
 
-Son los operadores que sólo necesitan un operando para funcionar.
+Los operadores **unarios** son los que necesitan un solo operando para funcionar.
 
 | Operador | Función                                                    |
 |:---------|:-----------------------------------------------------------|
 | +        | Indicar que un número es positivo                          |
-| -        | Indicar que un número es negativo                          |
+| -        | Invertir el signo de un número                             |
 | ++       | Incrementar el valor de una variable en 1                  |
 | \-\-     | Decrementar el valor de una variable en 1                  |
-| !        | Invertir el valor boolean de una variable de tipo boolean  |
+| !        | Invertir un valor de verdad (de true a false y viceversa)  |
 
 ```java
-// Operadores unarios y variables.
+// Operadores unarios y variables
 
-float precio = 1000 + 500; // valor asignado: 1500
-precio = -precio; // valor asignado: -1500 
-boolean existe = true; // Valor asignado: true
-existe = !existe; // Valor asignado: false
+float precio = 1000 + 500; // Valor asignado: 1500
+precio = -precio;          // Valor asignado: -1500
+boolean existe = true;     // Valor asignado: true
+existe = !existe;          // Valor asignado: false
 ```
-> **Nota:** Los operadores antepuestos antes del valor, no cambian el contenido original de la variable. Solo la asignación reemplaza el contenido de la variable.
+
+> **Nota:** `-precio` y `!existe` calculan un valor nuevo, pero por sí solos no modifican la variable. Es la asignación (`precio = ...`) la que reemplaza su contenido. La excepción son `++` y `--`, que sí modifican la variable sobre la que se aplican.
 
 * Pre y post incremento o decremento
 
-Al anteponer los operadores `++` o `--` antes de o después de variables enteras (por ejemplo), pre incrementa (o decrementa) o post incrementa (o decrementa) el valor de la variable según corresponda.
+Al anteponer o posponer los operadores `++` o `--` a una variable entera, pre incrementamos (o decrementamos) o post incrementamos (o decrementamos) el valor de la variable, según corresponda.
 
-Al pre incrementar o decrementar, primero se actualiza el valor la variable y luego se utiliza el mismo. Por su contrario, al post incrementar o decrementar, primero se usa el valor de la variable, para luego realizar la tarea.
+Al **pre** incrementar o decrementar, primero se actualiza el valor de la variable y luego se utiliza el valor ya actualizado. Por el contrario, al **post** incrementar o decrementar, primero se utiliza el valor actual y recién después se actualiza la variable.
 
 ```java
-int cantidad = 1; // valor asignado: 1
-int resultado = ++cantidad; // valor asignado: 2
-resultado = cantidad++; // valor asignado: 2. El valor de la variable cantidad, luego de esta sentencia será 3
+int cantidad = 1;
+int resultado = ++cantidad; // Primero incrementa (cantidad pasa a 2) y después asigna. resultado: 2, cantidad: 2
+resultado = cantidad++;     // Primero asigna (2) y después incrementa. resultado: 2, cantidad: 3
 
-resultado = --cantidad; // valor asignado: 2
-resultado = cantidad--; // valor asignado: 2. El valor de la variable cantidad, luego de esta sentencia será 1
+resultado = --cantidad;     // Primero decrementa (cantidad pasa a 2) y después asigna. resultado: 2, cantidad: 2
+resultado = cantidad--;     // Primero asigna (2) y después decrementa. resultado: 2, cantidad: 1
 ```
+
+El **operador ternario** es el único operador de Java que necesita tres operandos, y por eso lleva ese nombre. Está explicado más abajo, junto a los [operadores condicionales](#operadores-condicionales).
 
 ## Operadores de igualdad y relacionales
 
-Son los operadores que, principalmente, nos permiten comparar el contenido de dos variables (por ejemplo). La comparación siempre devuelve un valor de verdad (true o false).
+Son los operadores que nos permiten comparar dos valores. La comparación siempre devuelve un valor de verdad (`true` o `false`).
 
 | Operador | Descripción             |
 |:---------|:------------------------|
@@ -98,69 +119,105 @@ Son los operadores que, principalmente, nos permiten comparar el contenido de do
 | <=       | Menor o igual que       |
 
 ```java
-int edad = 21 
-edad == 21      // true
-edad != 21      // false
-edad > 21       // false
-edad >= 21      // true
-edad < 21       // false
-edad <= 21      // true
+int edad = 21;
+
+boolean esIgualA21     = edad == 21; // true
+boolean esDistintoDe21 = edad != 21; // false
+boolean esMayorA21     = edad > 21;  // false
+boolean esMayorOIgualA21 = edad >= 21; // true
+boolean esMenorA21     = edad < 21;  // false
+boolean esMenorOIgualA21 = edad <= 21; // true
 ```
+
+> **Importante:** `==` compara el contenido solo cuando trabajamos con tipos de dato **primitivos**. Con objetos (por ejemplo un `String`) compara si las dos variables apuntan al mismo objeto en memoria, no si tienen el mismo contenido. Para comparar el contenido de dos objetos se usa el método `equals()`.
+
+```java
+String nombre = "Firulais";
+String otroNombre = new String("Firulais"); // Creamos un objeto String nuevo, con el mismo contenido
+
+boolean sonElMismoObjeto = nombre == otroNombre;        // false: son dos objetos distintos en memoria
+boolean tienenElMismoTexto = nombre.equals(otroNombre); // true: el contenido es el mismo. Esta es la forma correcta
+```
+
+Esta distinción es una de las principales fuentes de errores para quien empieza: **con `String` y con cualquier objeto, usá siempre `equals()`**.
 
 ## Operadores lógicos
 
-Son los operadores que nos permiten evaluar más de una expresión booleana.
+Son los operadores que nos permiten combinar más de una expresión booleana en una sola.
 
 | Operador   | Descripción                  |
 |:-----------|:-----------------------------|
 | &&         | Operador condicional AND (y) |
 | \|\|       | Operador condicional OR (o)  |
-| ?:         | Operador ternario            |
-| instanceof | Operador instanceof          |
+| !          | Operador de negación NOT (no) |
 
+Cuando utilizamos `&&` necesitamos que **todas** las expresiones booleanas implicadas sean verdaderas para obtener `true` como resultado final.
 
-* AND y OR
-
-Los operadores `&&` y `||` nos permiten evaluar mas de una expresión booleana. Mientras que el operador ternario y el operador `instanceof`, funcionan de manera distinta.
-
-Cuando utilizamos `&&` necesitamos que todas las expresiones booleanas implicadas sean verdaderas para obtener true como último valor.
-
-Cuando utilizamos `||` necesitamos que al menos una de las expresiones booleanas implicadas sea verdadera para obtener true como último valor.
+Cuando utilizamos `||` necesitamos que **al menos una** de las expresiones booleanas implicadas sea verdadera para obtener `true` como resultado final.
 
 ```java
-int edad = 25 
-edad > 20 && edad < 30 // El contenido de la variable edad es mayor a 20 y, además es menor a 30. El resultado es true.
-edad == 25 || edad == 30 // El contenido de la variable edad es igual a 25, pero no es igual a 30. El resultado es true.
+int edad = 25;
 
-edad > 20 && edad < 23 // El contenido de la variable edad es mayor a 20, pero no es menor que 23. El resultado es false.
-edad < 25 || edad == 30 // El contenido de la variable edad no es menor a 25 y tampoco es igual a 30. El resultado es false.
-edad < 20 || edad == 25 // El contenido de la variable edad no es menor a 20 pero si es igual a 25. El resultado es true.
+boolean estaEnLaFranja  = edad > 20 && edad < 30;  // La edad es mayor a 20 y además menor a 30. Resultado: true
+boolean esVeinticincoOTreinta = edad == 25 || edad == 30; // La edad es igual a 25 (no hace falta que también sea 30). Resultado: true
+
+boolean casoUno   = edad > 20 && edad < 23;  // Es mayor a 20, pero no es menor que 23. Resultado: false
+boolean casoDos   = edad < 25 || edad == 30; // No es menor a 25 y tampoco es igual a 30. Resultado: false
+boolean casoTres  = edad < 20 || edad == 25; // No es menor a 20, pero sí es igual a 25. Resultado: true
 ```
 
-Cuando utilizamos `&&`, si la primera expresión es **false**, no continua evaluando las demás expresiones (todas deben ser true).
+* Evaluación en cortocircuito
 
-Cuando utilizamos `||`, si la primera expresión es **false**, continua evaluando las demaás expresiones (al menos necesita que una sea true).
+Ambos operadores dejan de evaluar apenas conocen el resultado final. A esto se lo llama evaluación en cortocircuito.
+
+Cuando utilizamos `&&`, si una expresión es **false**, el resultado final ya no puede ser `true`, así que no se evalúan las expresiones siguientes.
+
+Cuando utilizamos `||`, si una expresión es **true**, el resultado final ya no puede ser `false`, así que no se evalúan las expresiones siguientes.
+
+```java
+int cantidad = 0;
+
+// La segunda expresión nunca se evalúa, porque la primera ya es false
+boolean resultado = cantidad > 10 && cantidad < 100;
+```
+
+Esto es muy útil para evitar errores: si la primera expresión verifica que algo se puede usar, la segunda solo se evalúa cuando esa verificación pasó.
+
+## Operadores condicionales
 
 * Operador ternario
 
 El operador ternario es un operador condicional (ver [estructuras](./estructuras.html)).
-Evalua una expresión y en caso de cumplirse (ser true) permite realizar una acción, caso contrario (ser false), permite realizar otra accion. En general se utiliza con asignaciones.
+Evalúa una expresión y, en caso de cumplirse (ser `true`), devuelve un valor; en caso contrario (ser `false`), devuelve otro. En general se utiliza en asignaciones.
 
-La forma de utilizarlo es evaluando una expresión, y luego con el caracter `?` (caso verdadero) podemos definir que se asigna si se cumple dicha expresión. Con el caracter `:` (caso falso) podremos asignar algo, en caso de que la expresión no se cumpla.
+La forma de utilizarlo es escribir la expresión a evaluar, luego el caracter `?` seguido del valor para el caso verdadero, y luego el caracter `:` seguido del valor para el caso falso.
 
 ```java
 int edad = 25;
-String mayorA25 = edad > 25 ? "Si" : "No"; // A la variable mayorA25 se asigna "No".
+String esMayorA25 = edad > 25 ? "Si" : "No"; // A la variable esMayorA25 se le asigna "No"
 ```
 
-* Operador instanceof
+Es una forma abreviada de escribir esto:
 
-El operador `instanceof` es especial, nos permite identificar si un objeto es de una clase en específico (ver [clases](./clases.html#Objetos)). 
+```java
+int edad = 25;
+String esMayorA25;
+
+if (edad > 25) {
+    esMayorA25 = "Si";
+} else {
+    esMayorA25 = "No";
+}
+```
+
+## Operador instanceof
+
+El operador `instanceof` nos permite identificar si un objeto es de una clase en específico (ver [objetos](./clases.html#objetos)). Devuelve un valor de verdad.
 
 ```java
 String nombre = "Firulais";
 
-nombre instanceof String; // true
+boolean esUnString = nombre instanceof String; // true
 ```
 
 [Volver](../)

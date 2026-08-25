@@ -16,125 +16,158 @@ Para comenzar con el lenguaje, debemos tener presentes los siguientes conceptos:
 
 * El código fuente debe estar contenido dentro de una carpeta de origen (source folder), comúnmente nombrada `src`. Podemos tener más de una source folder.
 
-* Dentro de cada source folder, los archivos se deben agrupar en paquetes (packages). La forma de agruparlos deberá responder por la estructura o arquitectura del proyecto que adoptemos. La nomenclatura de un package por convención es: com.empresa.dominio. Se escribe desde lo más general (com) hasta lo más específico, siempre utilizando palabras en minúscula y separadas por puntos (.). En caso de tener un nombre compuesto como "Mi proyecto", se debe escribir como: com.miproyecto.dominio.
+* Dentro de cada source folder, los archivos se deben agrupar en paquetes (packages). La forma de agruparlos deberá responder a la estructura o arquitectura del proyecto que adoptemos. La nomenclatura de un package por convención es: com.empresa.dominio. Se escribe desde lo más general (com) hasta lo más específico, siempre utilizando palabras en minúscula y separadas por puntos (.). En caso de tener un nombre compuesto como "Mi proyecto", se debe escribir como: com.miproyecto.dominio.
 
 * El código fuente se escribe dentro de archivos con extensión .java. Muchos archivos con dicha extensión, las source folders y los paquetes, conforman el código fuente.
 
-* Java posee palabras reservadas como: (public, private, int, return, final, entre otras) las cuales no podremos utilizar para definir, por ejemplo, variables.
+* Todo el código que escribamos vive dentro de una [clase](./clases.html), y todo el código que se ejecuta vive dentro de un [método](./metodos.html). Los fragmentos de esta guía se muestran sueltos por claridad, pero para poder correrlos hay que ubicarlos dentro de un programa: ver [tu primer programa](./introduccion-a-java.html#tu-primer-programa).
 
-* Es posible incluir comentarios de utilidad para el desarrollador. Para realizar esto se deberá utilizar dos barras (// Comentario) lo cual creará un comentario 
-de una sola línea, o bien, barra asterisco - asterisco barra (/* líneas comentadas */) para comentar en múltiples líneas.
+* Si una clase que necesitamos usar no pertenece al paquete `java.lang` (por ejemplo `Scanner` o `Random`), debemos importarla con `import` al principio del archivo. Ver [imports](./introduccion-a-java.html#imports).
 
-* Es posible comentar código que podría ejecutarse. El código comentado, no será tenido en cuanta a la hora de ejecutar el programa.
+* Java posee palabras reservadas como `public`, `private`, `int`, `return` o `final`, entre otras, las cuales no podremos utilizar para nombrar, por ejemplo, variables.
+
+* Es posible incluir comentarios de utilidad para el desarrollador. Para esto se deben utilizar dos barras (`// Comentario`), lo cual crea un comentario de una sola línea, o bien barra-asterisco / asterisco-barra (`/* líneas comentadas */`) para comentar en múltiples líneas.
+
+* Es posible comentar código que podría ejecutarse. El código comentado no será tenido en cuenta a la hora de ejecutar el programa.
 
 * Resulta necesario realizar la [configuración de las variables de entorno](https://www.java.com/es/download/help/path_es.html) para que Java pueda ejecutarse correctamente.
 
-* Si bien es posible desarrollar un programa en Java con un editor de texto, es recomendable utilizar un [IDE](https://es.wikipedia.org/wiki/Entorno_de_desarrollo_integrado) (entorno de desarrollo integrado). Algunos de los IDE's mas utilizados son: [Eclipse](https://www.eclipse.org/downloads/), [VS Code](https://code.visualstudio.com/Download) o [IntelliJ Idea](https://www.jetbrains.com/es-es/idea/download/), entre otros. Siempre es necesario revisar la versión de Java instalada en el sistema operativo para que el IDE pueda ejecutarse correctamente.
+* Si bien es posible desarrollar un programa en Java con un editor de texto, es recomendable utilizar un [IDE](https://es.wikipedia.org/wiki/Entorno_de_desarrollo_integrado) (entorno de desarrollo integrado). Algunos de los IDE más utilizados son [Eclipse](https://www.eclipse.org/downloads/), [VS Code](https://code.visualstudio.com/Download) o [IntelliJ Idea](https://www.jetbrains.com/es-es/idea/download/), entre otros. Siempre es necesario revisar la versión de Java instalada en el sistema operativo para que el IDE pueda ejecutarse correctamente.
 
 ## Variables
 
-### Variables y constantes
+Las variables son un espacio de memoria que generará nuestro programa, donde podemos guardar datos. Se denominan variables porque su contenido puede cambiar.
 
-* Las variables son un espacio de memoria que generará nuestro programa, donde podemos guardar datos.
+### Declaración
 
-Java es un lenguaje fuertemente tipado, con lo cual, cuando determinamos que necesitamos almacenar algún dato para que nuestro programa lo pueda usar (en una variable), debemos indicar el tipo de dato que puede almacenar.
+Java es un lenguaje fuertemente tipado. Cuando necesitamos almacenar algún dato para que nuestro programa lo pueda usar (en una variable), debemos indicar el tipo de dato que esa variable puede almacenar.
 
-La nomenclatura de variables por convensión es [camelCase](https://en.wikipedia.org/wiki/Camel_case), debiendo comenzar el nombre de la variable en minúscula (así como toda la palabra), y si existe una segunda palabra, esta última comenzará con la primera letra en mayúscula.
-
-Las variables deben definirse siguiendo el siguiente orden: TipoDeDato nombreDeVariable;
-
-Se denominan variables, porque puede cambiar su contenido.
-
-El nombre de una variable no puede ser o comenzar con un número/s.
-
-No pueden existir dos variables con el mismo nombre.
-
- Cuando definimos una variable con tipo de dato primitivo, Java la crea en un lugar conocido como pila en memoria (Stack Memory), esta porción de memoria reservada para esa variable es estática y, puede tanto consultarse como cambiarse el dato almacenado en esa porción de memoria. Luego, cuando esta variable no se utiliza más (por terminar el programa por ejemplo), esa pila en memoria se limpia (la memoria es liberada para que pueda ser utilizada para otro fin).
- 
- Estas variables son creadas según el orden en las que las definimos en nuestro programa siguiendo la estructura LIFO (Last In First Out, el último en ingresar es el primero en salir). El sector donde se almacenan estas instrucciones es conocido como pila de llamadas (Call Stack).
+Las variables se declaran siguiendo este orden: `TipoDeDato nombreDeVariable;`
 
 ```java
-/* Definición de variable en Java
+/* Declaración de variable en Java
  * int -> tipo de dato
- * numero -> nombre de la variable
- * La definición debe terminar con un punto y coma (;)
+ * espacioParaNumeroVariable -> nombre de la variable
+ * La declaración debe terminar con un punto y coma (;)
  */
 
 int espacioParaNumeroVariable;
 ```
 
-* Las constantes, son parecidas a las variables (en cómo definirlas), pero en cambio, sólo pueden contener un dato el cual una vez asignado, no podrá cambiarse (será un valor constante).
+Reglas y convenciones para el nombre de una variable:
+
+* La nomenclatura por convención es [camelCase](https://en.wikipedia.org/wiki/Camel_case): el nombre comienza en minúscula y, si está formado por más de una palabra, cada palabra siguiente comienza con mayúscula. Ejemplo: `cantidadDeFrutas`.
+* El nombre no puede ser un número ni comenzar con un número.
+* El nombre no puede ser una palabra reservada del lenguaje.
+* No pueden existir dos variables con el mismo nombre **dentro del mismo ámbito** (por ejemplo, dentro del mismo método). Dos métodos distintos sí pueden tener, cada uno, una variable llamada `resultado`.
+
+Podemos declarar una variable y asignarle un valor en la misma línea. A esto se lo llama **inicialización**:
+
+```java
+// Declaración e inicialización de una variable
+int espacioParaNumeroVariable = 10;
+```
+
+> **Nota:** en la sección de [operadores](./operadores.html) se explica el funcionamiento del operador igual (=).
+
+**Importante:** una variable local (declarada dentro de un método) debe ser inicializada antes de poder usarse. Si intentamos leerla sin haberle asignado nunca un valor, obtendremos un error de compilación.
+
+### Variables y constantes
+
+Las constantes se parecen a las variables en la forma de declararlas, pero solo pueden contener un dato que, una vez asignado, no podrá cambiarse (será un valor constante).
 
 Para definir una constante debemos incluir la palabra reservada `final`.
 
-La convensión de nomenclatura para constantes es [snake_case](https://es.wikipedia.org/wiki/Snake_case), debiendo escribir todas las palabras en mayúscula, separándolas con guión bajo (_). 
+La convención de nomenclatura para constantes es [UPPER_SNAKE_CASE](https://es.wikipedia.org/wiki/Snake_case): todas las palabras en mayúscula, separadas con guión bajo (_).
 
 ```java
-/* Definición de una constante en Java
+/* Declaración e inicialización de una constante en Java
  * final -> indica que será una constante
  * int -> tipo de dato
  * ESPACIO_PARA_NUMERO_CONSTANTE -> nombre de la constante
  */
 
-final int ESPACIO_PARA_NUMERO_CONSTANTE;
-```
-
-Tanto las variables como las constantes pueden definirse asignando un valor en la misma línea (inicialización de variable o constante):
-```java
-// Definición e inicialización de variable y constante
-
-int espacioParaNumeroVariable = 10;
 final int ESPACIO_PARA_NUMERO_CONSTANTE = 100;
 ```
-> **Nota:** en la sección de [operadores](./operadores.html) se explica el funcionamiento del operador igual (=).
+
+Lo habitual es asignarle el valor a la constante en la misma línea en la que la declaramos, tal como en el ejemplo. Si intentamos asignarle un nuevo valor más adelante, obtendremos un error de compilación:
+
+```java
+final int ESPACIO_PARA_NUMERO_CONSTANTE = 100;
+ESPACIO_PARA_NUMERO_CONSTANTE = 200; // Error de compilación: no se puede reasignar una constante
+```
+
+### Dónde viven las variables
+
+Cuando declaramos una variable con un tipo de dato primitivo dentro de un método, Java reserva para ella un espacio en un sector de memoria conocido como pila (Stack Memory). Ese espacio tiene un tamaño fijo, determinado por el tipo de dato, y su contenido puede consultarse y cambiarse mientras la variable exista.
+
+Cuando el método termina, el espacio que ocupaban sus variables se libera automáticamente (queda disponible para otro uso).
+
+La pila funciona con la estructura LIFO (Last In First Out, el último en ingresar es el primero en salir): la última variable declarada es la primera en liberarse. El sector donde se registran las llamadas a métodos en curso se conoce como pila de llamadas (Call Stack).
+
+> **Nota:** los objetos se almacenan de otra manera. Ver [garbage collector](./clases.html#garbage-collector).
 
 ## Tipos de datos primitivos
 
-Tipo de dato: Representa la unidad de información que las variables pueden almacenar.
+Tipo de dato: representa la unidad de información que las variables pueden almacenar.
 
-[Tipo de dato primitivo](https://es.wikipedia.org/wiki/Tipo_de_dato_elemental#:~:text=Se%20llama%20tipo%20primitivo%20o,Char%20(Car%C3%A1cter)): son los tipos de datos mas básicos y elementales que un lenguaje de programación tipado nos provee.
+[Tipo de dato primitivo](https://es.wikipedia.org/wiki/Tipo_de_dato_elemental): son los tipos de datos más básicos y elementales que un lenguaje de programación tipado nos provee.
 
 La nomenclatura de los tipos de datos primitivos es siempre en minúscula.
 
 ### Números enteros
 
-Son tipos de datos que permiten almacenar en una variable o constante, números enteros (sin decimales). Esto nos indica que si un número es, por ejemplo, `120,35`, la variable o constante solo puede almacenar el número `120`. Los decimales se perderán.
+Son tipos de datos que permiten almacenar en una variable o constante números enteros (sin decimales).
 
 El grupo de números enteros está compuesto por los tipos de dato primitivos `byte`, `short`, `int` y `long`.
-Cada tipo de dato antes nombrado, posee una cantidad de bytes que utiliza para poder representar números.
+Cada tipo de dato antes nombrado posee una cantidad de bytes que utiliza para poder representar números. Cuantos más bytes, más grande es el rango de números que puede representar.
 
 | Tipo de dato | Cantidad de bytes | Rango de números posibles de representar                   |
 |:-------------|:------------------|:-----------------------------------------------------------|
 | byte         | 1                 | -128 hasta 127                                             |
-| short        | 2                 | -32768 hasta 32167                                         |
-| int          | 4                 | –2.147.483.648 hasta 2.147.483.647                         |
-| long         | 8                 | –9.223.372.036.854.775.808 hasta 9.223.372.036.854.775.807 |
+| short        | 2                 | -32.768 hasta 32.767                                       |
+| int          | 4                 | -2.147.483.648 hasta 2.147.483.647                         |
+| long         | 8                 | -9.223.372.036.854.775.808 hasta 9.223.372.036.854.775.807 |
 
 ```java
 byte edad = 21;
-short cantidadDePuertas = 30000;
-int cantidadDePersonasUnPais = 46000000;
-long cantidadDePersonasEnUnPais = 7951000000000;
+short cantidadDeAlumnos = 850;
+int cantidadDeHabitantesDeUnPais = 46000000;
+long cantidadDeHabitantesDelPlaneta = 8100000000L; // La L final es obligatoria: el número no entra en un int
+```
+
+> **Importante:** el tipo de dato elegido debe poder representar el número que queremos guardar. `byte edad = 200;` no compila, porque 200 está fuera del rango de `byte`.
+
+Si intentamos guardar un número con decimales en una variable de tipo entero, **no compila**:
+
+```java
+int numero = 120.35; // Error de compilación
+```
+
+Si realmente queremos quedarnos solo con la parte entera, debemos pedirlo de manera explícita con un *cast* (una conversión):
+
+```java
+int numero = (int) 120.35; // El contenido de numero es 120. Los decimales se descartan (no se redondea)
 ```
 
 ### Números con decimales
 
-Son tipos de datos que permiten almacenar en una variable o constante, números con decimales. Ejemplo: `120,35`.
+Son tipos de datos que permiten almacenar en una variable o constante números con decimales. Ejemplo: `120.35`.
 
 El grupo de los números con decimales está compuesto por los tipos de dato primitivos `float` y `double`.
-Cada tipo de dato antes nombrado, posee una cantidad de bytes que utiliza para poder representar números.
+Cada tipo de dato antes nombrado posee una cantidad de bytes que utiliza para poder representar números.
 
 | Tipo de dato | Cantidad de bytes | Rango aproximado de números posibles de representar        |
 |:-------------|:------------------|:-----------------------------------------------------------|
 | float        | 4                 | -3,4 x 10^38 hasta 3,4 x 10^38                             |
-| double       | 8                 | -3,4 x 10^308 hasta 3,4 x 10^308                           |
+| double       | 8                 | -1,7 x 10^308 hasta 1,7 x 10^308                           |
 
 ```java
-float pi = 3.1415926535f; 
+float pi = 3.1415926535f;
 double e = 2.718281828459045235360;
 ```
 
-> **Nota:** Según la configuración regional o de idioma, puede utilizarse el punto (.) o la coma (,) para indicar el inicio de los decimales. Lo habitual es usar el punto (.).
+> **Nota:** en el código fuente de Java el separador decimal es **siempre** el punto (.), sin importar la configuración regional del sistema operativo. La coma se usa para separar parámetros, nunca decimales.
 
 ### Valores de verdad
 
@@ -149,20 +182,20 @@ boolean falso = false;
 
 ### Caracteres
 
-Existe un tipo de dato primitivo que nos permite almacenar un caracter. Dicho tipo de dato primitivo es `char`.
-El contenido de la variable o constante para caracteres, debe utilizarse entre comillas simples (').
-Es posible asignar un número que represente el caracter deseado, según (por ejemplo), la tabla [ASCII](https://elcodigoascii.com.ar/), donde por ejemplo el número `65` equivale al caracter `A` (en mayúscula).
+Existe un tipo de dato primitivo que nos permite almacenar un caracter: `char`.
+El contenido de una variable o constante de tipo `char` debe escribirse entre comillas simples (').
+También es posible asignar un número que represente el caracter deseado según, por ejemplo, la tabla [ASCII](https://elcodigoascii.com.ar/), donde el número `65` equivale al caracter `A` (en mayúscula).
 
 ```java
 char letraACaracter = 'A';
 char letraANumero = 65;
 ```
 
-Las sentencias del ejemplo son equivalentes.
+Las dos sentencias del ejemplo son equivalentes: ambas variables contienen el caracter `A`.
 
 ## Literales
 
-Son valores posibles de asignar a variables o constantes, dependiendo del tipo de dato que la variable o constante pueda representar.
+Son los valores que escribimos directamente en el código y que podemos asignar a variables o constantes, dependiendo del tipo de dato que la variable o constante pueda representar.
 
 ### Literales de números enteros
 
@@ -171,38 +204,46 @@ Para los tipos de dato primitivos que representan números enteros, el tipo de d
 ```java
 // El número 20 es el literal entero
 byte edad = 20;
-short cantidadDePuertas = 20;
-int cantidadDePersonasUnPais = 20;
-long cantidadDePersonasEnUnPais = 20;
+short cantidadDeAlumnos = 20;
+int cantidadDeHabitantesDeUnPais = 20;
+long cantidadDeHabitantesDelPlaneta = 20;
 ```
 
-Para crear un literal de tipo long, se debe incluir la letra `L` al final del número.
+Como el literal es `int`, si el número que necesitamos escribir supera el rango de un `int`, debemos incluir la letra `L` al final para convertirlo en un literal de tipo `long`.
 
 ```java
 // Literal de tipo long
-long cantidadDePersonasEnUnPais = 20L;
+long cantidadDeHabitantesDelPlaneta = 8100000000L;
+
+// Sin la L, esto es un error de compilación: "integer number too large"
+long cantidadDeHabitantesDelPlaneta = 8100000000;
 ```
 
 ### Literales de números decimales
 
-Para los tipos de dato primitivos que representan números con decimales, el tipo de dato por defecto al escribir un literal (número con decimales) es `double`.
+Para los tipos de dato primitivos que representan números con decimales, el tipo de dato por defecto al escribir un literal (número con decimales) es `double`. Por eso, para asignarlo a un `float` debemos agregarle la letra `f` al final.
 
 ```java
 // La letra f al final del número indica que será un literal de tipo float
 float pi = 3.1415926535f;
+
+// Sin la f, esto es un error de compilación: un double no entra en un float
+float pi = 3.1415926535;
+
+// Un literal con decimales es double por defecto, así que no necesita ningún sufijo
 double e = 2.718281828459045235360;
 ```
 
 ### Literales de caracteres y cadenas
 
-Para asignar un literal de tipo `char` debemos utilizar el caracter entre comillas simples (sin espacios intermedios).
+Para asignar un literal de tipo `char` debemos escribir el caracter entre comillas simples.
 
 ```java
 // 'A' -> literal de tipo char
 char letraACaracter = 'A';
 ```
 
-Java no provee un tipo de dato primitivo para palabras o textos. En su lugar deberemos utilizar la clase `String` (ver [clases](./clases.html) y notar la primera letra en mayúscula). Los literales de tipo `String` deben representarse entre comillas dobles (").
+Java no provee un tipo de dato primitivo para palabras o textos. En su lugar deberemos utilizar la clase `String` (ver [clases](./clases.html) y notar la primera letra en mayúscula). Los literales de tipo `String` deben escribirse entre comillas dobles (").
 
 ```java
 // "Firulais" -> literal de String
@@ -211,35 +252,46 @@ String nombre = "Firulais";
 
 ## Contador
 
-Posiblemente necesitemos en alguna operación contar. Para realizar esta tarea, podemos incluir sentencias de código como las siguientes.
+Un contador es una variable que usamos para llevar la cuenta de cuántas veces ocurre algo. Siempre avanza de a **una unidad**.
 
 ```java
-int numero = 0; // Definición e inicialización de variable de tipo int inicializada (su contenido es) con valor 0
-numero = numero + 1; // Utiliza el valor actual de la variable número, le suma uno y la asigna a la misma variable. El nuevo dato o valor de numero es 1
-numero = numero + 1; // El nuevo dato o valor de numero es 2.
-numero += 1; // Forma simplificada de realizar la misma operación (sumar uno), sin necesidad de repetir el nombre de la variable. El nuevo dato o valor de numero es 3
-
-numero -= 1; // Es posible de representar con la forma simplificada, las operaciones con los demás opeadores aritméticos. El nuevo dato o valor de numero es 2
-numero *= 2; // El nuevo dato o valor de numero es 4
-numero /= 2; // El nuevo dato o valor de numero es 2
+int cantidadDeFrutas = 0; // Inicializamos el contador en 0
+cantidadDeFrutas = cantidadDeFrutas + 1; // Toma el valor actual de la variable, le suma uno y lo asigna a la misma variable. El nuevo valor es 1
+cantidadDeFrutas = cantidadDeFrutas + 1; // El nuevo valor es 2
+cantidadDeFrutas += 1; // Forma abreviada de la misma operación, sin repetir el nombre de la variable. El nuevo valor es 3
+cantidadDeFrutas++; // Forma aún más breve, exclusiva para sumar uno. El nuevo valor es 4
 ```
 
-Para contar podemos también utilizar [pre y post incremento o decremento](./operadores.html#operadores-unarios-y-ternarios):
+Para contar también podemos utilizar [pre y post incremento o decremento](./operadores.html#operadores-unarios-y-ternarios):
 
 ```java
-int numero = 0; // Definición e inicialización de variable de tipo int inicializada (su contenido es) con valor 0
-++numero; // Pre incrementa en 1 el dato o valor de la variable numero. El nuevo dato o valor es 1
---numero; // Pre decrementa en 1 el dato o valor de la variable numero. El nuevo dato o valor es 0
+int cantidadDeFrutas = 0; // Inicializamos el contador en 0
+++cantidadDeFrutas; // Pre incrementa en 1 el valor de la variable. El nuevo valor es 1
+--cantidadDeFrutas; // Pre decrementa en 1 el valor de la variable. El nuevo valor es 0
 ```
 
 ## Acumulador
 
-En ocasiones, podemos necesitar acumular valores que no sean de uno en uno. Para esto aplicaremos el concepto de acumulador.
+Un acumulador es una variable que usamos para ir sumando valores que **no son siempre de a uno**. La diferencia con el contador es esa: el contador responde "cuántas veces", el acumulador responde "cuánto en total".
 
 ```java
-float precio = 1000;
-precio = precio + 500; // Al dato o valor de la variable precio le agrega 500
-precio += 500; // Al dato o valor de la variable precio le agrega 500, con la forma simplificada
+float precioTotal = 0; // Inicializamos el acumulador en 0, porque no afecta a la suma
+precioTotal = precioTotal + 1000; // Al valor actual le agrega 1000. El nuevo valor es 1000
+precioTotal += 500; // Al valor actual le agrega 500, con la forma abreviada. El nuevo valor es 1500
+```
+
+### Formas abreviadas de los operadores aritméticos
+
+Todas las operaciones aritméticas tienen una forma abreviada que evita repetir el nombre de la variable:
+
+```java
+int numero = 10;
+
+numero += 5; // Equivale a: numero = numero + 5. El nuevo valor es 15
+numero -= 5; // Equivale a: numero = numero - 5. El nuevo valor es 10
+numero *= 2; // Equivale a: numero = numero * 2. El nuevo valor es 20
+numero /= 2; // Equivale a: numero = numero / 2. El nuevo valor es 10
+numero %= 3; // Equivale a: numero = numero % 3. El nuevo valor es 1
 ```
 
 [Volver](../)

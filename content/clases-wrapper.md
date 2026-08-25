@@ -6,7 +6,7 @@ layout: default
 
 # Clases Wrapper (Envoltorio)
 
-Para cada tipo de dato primitivo existe una clase Wrapper (o envoltorio) que nos provee de comportamiento (métodos) de uso común, los cuales nos ayudan con los temas conocidos a resolver. Cabe destacar que los Wrappers son clases, razón por la cual, podemos aprovechar el uso de los tipos de datos primitivos como objetos.
+Para cada tipo de dato primitivo existe una clase Wrapper (o envoltorio) que agrega, sobre ese tipo de dato, métodos de uso común: convertirlo a otros tipos, pasarlo a texto, obtener sus valores máximo y mínimo. Al ser clases, los Wrappers nos permiten tratar a un tipo de dato primitivo como si fuera un objeto.
 
 En Java, existen 8 tipos de dato primitivos, por ende, contaremos con 8 clases Wrapper.
 
@@ -21,9 +21,16 @@ En Java, existen 8 tipos de dato primitivos, por ende, contaremos con 8 clases W
 | char                   | Character         |
 | boolean                | Boolean           |
 
-Es posible convertir cada tipo de dato primitivo en su correspondiente Wrapper (Autoboxing), o bien, convertir un tipo de dato Wrapper en un tipo de dato primitivo (Unboxing).
+Java convierte automáticamente cada tipo de dato primitivo en su correspondiente Wrapper (**autoboxing**) y cada Wrapper en su tipo de dato primitivo (**unboxing**), sin que tengamos que escribir nada especial.
 
-Si definimos una variable con tipo de dato clase Wrapper, provee métodos de utlidad. Además, cada clase Wrapper provee de métodos estáticos útiles. 
+```java
+Integer numeroWrapper = 5; // Autoboxing: el literal int 5 se convierte en un objeto Integer
+int numeroPrimitivo = numeroWrapper; // Unboxing: el objeto Integer se convierte en un int
+```
+
+> **Importante:** al ser clases, una variable Wrapper puede contener `null`, cosa que un tipo primitivo nunca puede. Si intentamos hacer unboxing de una variable que vale `null`, el programa se interrumpe con un `NullPointerException`.
+
+Si declaramos una variable con el tipo de dato de una clase Wrapper, contamos con métodos de utilidad. Además, cada clase Wrapper provee métodos y constantes estáticos útiles.
 
 ## Byte
 
@@ -37,7 +44,7 @@ Utilizando la clase `Byte` para definir una variable podemos contar con herramie
 
 ```java
 Byte numeroByteWrapper = 1; // Variable con tipo de dato Byte
-		
+
 byte numeroByte = numeroByteWrapper.byteValue(); // Devuelve el contenido de la variable de tipo de dato Byte como byte (primitivo)
 short numeroShort = numeroByteWrapper.shortValue(); // Devuelve el contenido de la variable de tipo de dato Byte como short (primitivo)
 int numeroInt = numeroByteWrapper.intValue(); // Devuelve el contenido de la variable de tipo de dato Byte como int (primitivo)
@@ -49,7 +56,7 @@ boolean sonIguales = numeroByteWrapper.equals(numeroByte); // Permite conocer si
 
 // Constantes estáticas de utilidad
 byte maximoValor = Byte.MAX_VALUE; // Esta constante estática posee el máximo valor para el tipo de dato Byte
-byte minimoValor = Byte.MIN_VALUE;// Esta constante estática posee el mínimo valor para el tipo de dato Byte
+byte minimoValor = Byte.MIN_VALUE; // Esta constante estática posee el mínimo valor para el tipo de dato Byte
 
 // Métodos estáticos de utilidad
 byte numeroConvertidoDesdeString = Byte.parseByte(numeroComoString); // Devuelve el contenido de la variable String en el argumento como byte (primitivo)
@@ -69,7 +76,7 @@ Utilizando la clase `Short` para definir una variable podemos contar con herrami
 
 ```java
 Short numeroShortWrapper = 1; // Variable con tipo de dato Short
-		
+
 byte numeroByte = numeroShortWrapper.byteValue(); // Devuelve el contenido de la variable de tipo de dato Short como byte (primitivo)
 short numeroShort = numeroShortWrapper.shortValue(); // Devuelve el contenido de la variable de tipo de dato Short como short (primitivo)
 int numeroInt = numeroShortWrapper.intValue(); // Devuelve el contenido de la variable de tipo de dato Short como int (primitivo)
@@ -81,7 +88,7 @@ boolean sonIguales = numeroShortWrapper.equals(numeroShort); // Permite conocer 
 
 // Constantes estáticas de utilidad
 short maximoValor = Short.MAX_VALUE; // Esta constante estática posee el máximo valor para el tipo de dato Short
-short minimoValor = Short.MIN_VALUE;// Esta constante estática posee el mínimo valor para el tipo de dato Short
+short minimoValor = Short.MIN_VALUE; // Esta constante estática posee el mínimo valor para el tipo de dato Short
 
 // Métodos estáticos de utilidad
 short numeroConvertidoDesdeString = Short.parseShort(numeroComoString); // Devuelve el contenido de la variable String en el argumento como short (primitivo)
@@ -101,7 +108,7 @@ Utilizando la clase `Integer` para definir una variable podemos contar con herra
 
 ```java
 Integer numeroIntegerWrapper = 1; // Variable con tipo de dato Integer
-		
+
 byte numeroByte = numeroIntegerWrapper.byteValue(); // Devuelve el contenido de la variable de tipo de dato Integer como byte (primitivo)
 short numeroShort = numeroIntegerWrapper.shortValue(); // Devuelve el contenido de la variable de tipo de dato Integer como short (primitivo)
 int numeroInt = numeroIntegerWrapper.intValue(); // Devuelve el contenido de la variable de tipo de dato Integer como int (primitivo)
@@ -113,7 +120,7 @@ boolean sonIguales = numeroIntegerWrapper.equals(numeroInt); // Permite conocer 
 
 // Constantes estáticas de utilidad
 int maximoValor = Integer.MAX_VALUE; // Esta constante estática posee el máximo valor para el tipo de dato Integer
-int minimoValor = Integer.MIN_VALUE;// Esta constante estática posee el mínimo valor para el tipo de dato Integer
+int minimoValor = Integer.MIN_VALUE; // Esta constante estática posee el mínimo valor para el tipo de dato Integer
 
 // Métodos estáticos de utilidad
 int numeroConvertidoDesdeString = Integer.parseInt(numeroComoString); // Devuelve el contenido de la variable String en el argumento como int (primitivo)
@@ -127,13 +134,13 @@ Es la clase Wrapper del tipo de dato primitivo `long`. En el siguiente ejemplo v
 
 ```java
 long numeroLong = 1; // Tipo de dato primitivo
-Long numeroLongWrapper = 1; // Clase Wrapper
+Long numeroLongWrapper = 1L; // Clase Wrapper. La L es obligatoria: no existe conversión automática de int a Long
 ```
 Utilizando la clase `Long` para definir una variable podemos contar con herramientas como las siguientes:
 
 ```java
 Long numeroLongWrapper = 1L; // Variable con tipo de dato Long
-		
+
 byte numeroByte = numeroLongWrapper.byteValue(); // Devuelve el contenido de la variable de tipo de dato Long como byte (primitivo)
 short numeroShort = numeroLongWrapper.shortValue(); // Devuelve el contenido de la variable de tipo de dato Long como short (primitivo)
 int numeroInt = numeroLongWrapper.intValue(); // Devuelve el contenido de la variable de tipo de dato Long como int (primitivo)
@@ -145,7 +152,7 @@ boolean sonIguales = numeroLongWrapper.equals(numeroLong); // Permite conocer si
 
 // Constantes estáticas de utilidad
 long maximoValor = Long.MAX_VALUE; // Esta constante estática posee el máximo valor para el tipo de dato Long
-long minimoValor = Long.MIN_VALUE;// Esta constante estática posee el mínimo valor para el tipo de dato Long
+long minimoValor = Long.MIN_VALUE; // Esta constante estática posee el mínimo valor para el tipo de dato Long
 
 // Métodos estáticos de utilidad
 long numeroConvertidoDesdeString = Long.parseLong(numeroComoString); // Devuelve el contenido de la variable String en el argumento como long (primitivo)
@@ -158,14 +165,14 @@ numeroLongWrapper = Long.valueOf(numeroComoString); // Devuelve el contenido de 
 Es la clase Wrapper del tipo de dato primitivo `float`. En el siguiente ejemplo veremos cómo definir una variable con el tipo de dato primitivo y con la clase Wrapper.
 
 ```java
-float numeroLong = 1; // Tipo de dato primitivo
-Float numeroLongWrapper = 1f; // Clase Wrapper
+float numeroFloat = 1f; // Tipo de dato primitivo
+Float numeroFloatWrapper = 1f; // Clase Wrapper. La f es obligatoria: no existe conversión automática de int a Float
 ```
 Utilizando la clase `Float` para definir una variable podemos contar con herramientas como las siguientes:
 
 ```java
 Float numeroFloatWrapper = 1f; // Variable con tipo de dato Float
-		
+
 byte numeroByte = numeroFloatWrapper.byteValue(); // Devuelve el contenido de la variable de tipo de dato Float como byte (primitivo)
 short numeroShort = numeroFloatWrapper.shortValue(); // Devuelve el contenido de la variable de tipo de dato Float como short (primitivo)
 int numeroInt = numeroFloatWrapper.intValue(); // Devuelve el contenido de la variable de tipo de dato Float como int (primitivo)
@@ -177,7 +184,7 @@ boolean sonIguales = numeroFloatWrapper.equals(numeroFloat); // Permite conocer 
 
 // Constantes estáticas de utilidad
 float maximoValor = Float.MAX_VALUE; // Esta constante estática posee el máximo valor para el tipo de dato Float
-float minimoValor = Float.MIN_VALUE;// Esta constante estática posee el mínimo valor para el tipo de dato Float
+float minimoValor = Float.MIN_VALUE; // Esta constante estática posee el mínimo valor para el tipo de dato Float
 
 // Métodos estáticos de utilidad
 float numeroConvertidoDesdeString = Float.parseFloat(numeroComoString); // Devuelve el contenido de la variable String en el argumento como float (primitivo)
@@ -190,14 +197,14 @@ numeroFloatWrapper = Float.valueOf(numeroComoString); // Devuelve el contenido d
 Es la clase Wrapper del tipo de dato primitivo `double`. En el siguiente ejemplo veremos cómo definir una variable con el tipo de dato primitivo y con la clase Wrapper.
 
 ```java
-double numeroLong = 1; // Tipo de dato primitivo
-Double numeroLongWrapper = 1D; // Clase Wrapper
+double numeroDouble = 1; // Tipo de dato primitivo
+Double numeroDoubleWrapper = 1D; // Clase Wrapper. La D es obligatoria: no existe conversión automática de int a Double
 ```
-Utilizando la clase `Float` para definir una variable podemos contar con herramientas como las siguientes:
+Utilizando la clase `Double` para definir una variable podemos contar con herramientas como las siguientes:
 
 ```java
 Double numeroDoubleWrapper = 1D; // Variable con tipo de dato Double
-		
+
 byte numeroByte = numeroDoubleWrapper.byteValue(); // Devuelve el contenido de la variable de tipo de dato Double como byte (primitivo)
 short numeroShort = numeroDoubleWrapper.shortValue(); // Devuelve el contenido de la variable de tipo de dato Double como short (primitivo)
 int numeroInt = numeroDoubleWrapper.intValue(); // Devuelve el contenido de la variable de tipo de dato Double como int (primitivo)
@@ -208,11 +215,11 @@ String numeroComoString = numeroDoubleWrapper.toString(); // Devuelve el conteni
 boolean sonIguales = numeroDoubleWrapper.equals(numeroDouble); // Permite conocer si el contenido de la variable es igual al de otra variable double
 
 // Constantes estáticas de utilidad
-double maximoValor = Double.MAX_VALUE; // Esta constante estática posee el máximo valor para el tipo de dato Float
-double minimoValor = Double.MIN_VALUE;// Esta constante estática posee el mínimo valor para el tipo de dato Float
+double maximoValor = Double.MAX_VALUE; // Esta constante estática posee el máximo valor para el tipo de dato Double
+double minimoValor = Double.MIN_VALUE; // Esta constante estática posee el mínimo valor positivo para el tipo de dato Double
 
 // Métodos estáticos de utilidad
-double numeroConvertidoDesdeString = Double.parseDouble(numeroComoString); // Devuelve el contenido de la variable String en el argumento como float (primitivo)
+double numeroConvertidoDesdeString = Double.parseDouble(numeroComoString); // Devuelve el contenido de la variable String en el argumento como double (primitivo)
 numeroComoString = Double.toString(numeroDouble); // Devuelve el contenido de la variable en el argumento double como un nuevo objeto String
 numeroDoubleWrapper = Double.valueOf(numeroComoString); // Devuelve el contenido de la variable en el argumento como un nuevo objeto Double
 ```
@@ -225,7 +232,7 @@ Es la clase Wrapper del tipo de dato primitivo `char`. En el siguiente ejemplo v
 char caracter = 'a'; // Tipo de dato primitivo
 Character caracterCharacterWrapper = 'a'; // Clase Wrapper
 ```
-Utilizando la clase `Float` para definir una variable podemos contar con herramientas como las siguientes:
+Utilizando la clase `Character` para definir una variable podemos contar con herramientas como las siguientes:
 
 ```java
 Character caracterCharacterWrapper = 'a'; // Variable con tipo de dato Character
@@ -235,11 +242,11 @@ boolean sonIguales = caracterCharacterWrapper.equals(caracter); // Permite conoc
 
 // Constantes estáticas de utilidad
 char maximoValor = Character.MAX_VALUE; // Esta constante estática posee el máximo valor para el tipo de dato Character
-double minimoValor = Character.MIN_VALUE;// Esta constante estática posee el mínimo valor para el tipo de dato Character
+char minimoValor = Character.MIN_VALUE; // Esta constante estática posee el mínimo valor para el tipo de dato Character
 
 // Métodos estáticos de utilidad
-caracterComoString = Character.toString(caracter); // Devuelve el contenido de la variable en el argumento double como un nuevo objeto String
-caracterCharacterWrapper = Character.valueOf(caracter); // Devuelve el contenido de la variable en el argumento como un nuevo objeto Double
+caracterComoString = Character.toString(caracter); // Devuelve el contenido de la variable en el argumento char como un nuevo objeto String
+caracterCharacterWrapper = Character.valueOf(caracter); // Devuelve el contenido de la variable en el argumento como un nuevo objeto Character
 boolean esUnaLetraDelAlfabeto = Character.isAlphabetic(caracter); // Devuelve verdadero si es una letra mayúscula, minúscula.
 boolean esUnNumero = Character.isDigit(caracter); // Devuelve verdadero si es un número
 boolean esUnaLetraOUnNumero = Character.isLetterOrDigit(caracter); // Devuelve verdadero si es una letra o un número.
@@ -251,25 +258,26 @@ Es la clase Wrapper del tipo de dato primitivo `boolean`. En el siguiente ejempl
 
 ```java
 boolean existe = true; // Tipo de dato primitivo
-Boolean existeBoolearWrapper = true; // Clase Wrapper
+Boolean existeBooleanWrapper = true; // Clase Wrapper
 ```
 Utilizando la clase `Boolean` para definir una variable podemos contar con herramientas como las siguientes:
 
 ```java
-Boolean existeBoolearWrapper = true; // Variable con tipo de dato Boolean
-boolean existe = existeBoolearWrapper.booleanValue(); // Devuelve el contenido de la variable de tipo de dato Boolean como boolean (primitivo)
-String existeComoString = existeBoolearWrapper.toString(); // Devuelve el contenido de la variable de tipo de dato Boolean como String
-boolean sonIguales = existeBoolearWrapper.equals(existe); // Permite conocer si el contenido de la variable es igual al de otra variable boolean
+Boolean existeBooleanWrapper = true; // Variable con tipo de dato Boolean
+boolean existe = existeBooleanWrapper.booleanValue(); // Devuelve el contenido de la variable de tipo de dato Boolean como boolean (primitivo)
+String existeComoString = existeBooleanWrapper.toString(); // Devuelve el contenido de la variable de tipo de dato Boolean como String
+boolean sonIguales = existeBooleanWrapper.equals(existe); // Permite conocer si el contenido de la variable es igual al de otra variable boolean
 
 // Constantes estáticas de utilidad
 boolean verdadero = Boolean.TRUE; // Esta constante estática posee el valor de verdad true
-boolean falso = Boolean.FALSE;// Esta constante estática posee el valor de verdad false
+boolean falso = Boolean.FALSE; // Esta constante estática posee el valor de verdad false
 
 // Métodos estáticos de utilidad
 existeComoString = Boolean.toString(existe); // Devuelve el contenido de la variable en el argumento boolean como un nuevo objeto String
-existeBoolearWrapper = Boolean.valueOf(existe); // Devuelve el contenido de la variable en el argumento como un nuevo objeto Boolean
-existe = Boolean.getBoolean(existeComoString); // Devuelve el contenido de la variable en el argumento como un boolean
-existe = Boolean.parseBoolean(existeComoString); // Devuelve el contenido de la variable en el argumento como un boolean
+existeBooleanWrapper = Boolean.valueOf(existe); // Devuelve el contenido de la variable en el argumento como un nuevo objeto Boolean
+existe = Boolean.parseBoolean(existeComoString); // Devuelve el contenido de la variable en el argumento como un boolean. Devuelve true solo si el texto es "true", sin distinguir mayúsculas de minúsculas
 ```
+
+> **Importante:** al ser objetos, dos variables Wrapper deben compararse con `equals()` y no con `==`, tal como se explica en [operadores de igualdad](./operadores.html#operadores-de-igualdad-y-relacionales).
 
 [Volver](../)

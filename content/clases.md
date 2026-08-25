@@ -6,91 +6,54 @@ layout: default
 
 # Clases
 
-Las clases son el principal elemento para representar un elemento de la realidad en código ([Abstracción](https://es.wikipedia.org/wiki/Abstracci%C3%B3n_(inform%C3%A1tica)) de POO). Definen las características (atributos) y comportamiento (métodos) que poseerán todos los objetos creados a partir de la clase que definimos.
-
-## Modificadores de acceso
-
-Un modificador de acceso establece si se permite el acceso (el nivel de acceso o si no está permitido) a una clase o elemento de una clase, como pueden ser atributos o métodos. 
-
-Java provee de cuatro modificadores de acceso:
-* public: el elemento es de acceso público. Aplicado sobre la definición de una clase, nos permite que la misma sea utilizada en todo el proyecto.
-* private: generalmente utilizado sobre los atributos de una clase (también sobre algunos métodos), no permite el acceso directo a alguno de estos elementos de la clase, por fuera de la clase. Es el nivel de acceso mas restrictivo.
-* protected: mas utilizado al implementar herencia, permite que los atributos o métodos de una superclase sean accedidos por una clase que herede de una superclase.
-* default: cuando no se define algun modificador de acceso de los anteriores, se activa este modificador de acceeso. Permite el acceso a todas las clases dentro del mismo paquete (package).
-
-## Constructor
-
-Es una especie de método (aunque tiene su propia forma de definirse), que nos permite inicializar los objetos que se creen a partir de la clase que definimos. Podemos tener más de un constructor.
-
-El constructor más comun es el constructor que no recibe parámetros. Este constructor está implícito, salvo que se defina un constructor que posea parámetros (al menos uno), en ese caso, debemos definir (escribir) el constructor vacío.
-
-Un constructor posee un modificador de acceso (generalmente public) y lleva como nombre el mismo nombre de la clase. Posee además, dos llaves, una de apertura y otra de cierre que definen las sentencias que deben ejecutarse al ser utilizado dicho constructor.
-
-```java
-// Considerando que la clase se llama Perro, definimos un constructor sin parámetros
-
-public Perro () {
-    // Lineas de código del constructor
-}
-```
-
-Como se dijo antes, es posible tener mas de un constructor (sobrecarga de constructor). En caso de definir un nuevo constructor, debe recibir al menos un parámetro (en comparación con el constructor que no recibe parámetros), para no obtener un error de compilación:
-
-```java
-// Considerando que la clase se llama Perro, definimos un constructor con un parámetro
-
-public Perro (String nombre) {
-    // Lineas de código del constructor
-}
-```
-
-Si necesitamos definir otro constructor, y considerando que ya existe el constructor vacío y el que recibe un parámetro, el nuevo constructor debe recibir distintos parámetros (quizás más de uno), o bien, no en el mismo orden con respecto a los tipos de dato (los nombres de los parámetros son ignorados).
-
-```java
-// Considerando que la clase se llama Perro, definimos un constructor con mas de un parámetro
-
-public Perro (String nombre, int edad) {
-    // Lineas de código del constructor
-}
-```
-
-Un constructor puede recibir como parámetro un tipo de dato personalizado (algún objeto creado a partir de una clase definida por nosotros):
-
-```java
-// Considerando que la clase se llama Perro, definimos un constructor con mas de un parámetro y recibiendo un parámetro de una clase personalizada
-
-public Perro (String nombre, int edad, Persona duenio) {
-    // Lineas de código del constructor
-}
-```
-
-Es importante saber, que en la creación de un objeto (explicado mas abajo), solo se utiliza un constructor.
+Las clases son el principal elemento para representar un elemento de la realidad en código ([abstracción](https://es.wikipedia.org/wiki/Abstracci%C3%B3n_(inform%C3%A1tica)) de POO). Definen las características (atributos) y el comportamiento (métodos) que poseerán todos los objetos creados a partir de la clase que definimos.
 
 ## Definición de clase personalizada
 
-Para definir una clase, debemos indicar un modificador de acceso (el más común es `public`), seguido de la palabra reservada `class` y un nombre de clase como `Perro`.
+Para definir una clase debemos indicar un modificador de acceso (el más común es `public`), seguido de la palabra reservada `class` y un nombre de clase como `Perro`.
 
-La nomenclatura de clases, por convención, es [PascalCase](https://es.wikipedia.org/wiki/Camel_case) donde la primera letra de la palabra se escribe en mayúscula y las siguientes en minúscula. Si existe una segunda palabra, esta debe comenzar en mayúscula y el resto de las letras en minúscula: `AutoVolador`.
-Las clases incluyen sus propias llaves de apertura y cierre, las cuales son obligatorias.
+La nomenclatura de clases, por convención, es [PascalCase](https://es.wikipedia.org/wiki/Camel_case): la primera letra de cada palabra se escribe en mayúscula y no se usan separadores. Ejemplo: `AutoVolador`.
 
-Las clases no poseen paréntesis para recibir parámetros (como los métodos), esta tarea (recibir parámetros) es relegada a los constructores.
+Las clases incluyen sus propias llaves de apertura y cierre, que son obligatorias.
+
+Las clases no poseen paréntesis para recibir parámetros (como los métodos); esa tarea queda a cargo de los [constructores](#constructor).
 
 ```java
 public class Perro {
     // Contenido de la clase
 }
 ```
-Las clases suelen (quizás por convención) tener al menos tres secciones, donde escribiremos los elementos que contiene.
 
-Al principio de la clase, se suelen escribir los atributos (variables) y constantes que pueda tener la clase. Los atributos, en Java, deben tener un modificador de acceso `private` para cumplir con el concepto de [encapsulamiento](./introduccion-a-java.html). Los atributos y constantes estarán presentes en todos los objetos que se creen a partir de la clase que definimos.
+> **Importante:** una clase `public` debe estar en un archivo con exactamente su mismo nombre. La clase `Perro` va en el archivo `Perro.java`.
 
-Las constantes definidas en la clase, pueden ser `private` o `public`, según sea necesario.
+Las clases suelen organizarse en tres secciones, en este orden:
 
-Los atributos de una clase, raramente son inicializados al momento de su definición, esta tarea de "inicialización", se deja para cada constructor.
+1. **Atributos y constantes**: las características de la clase.
+2. **Constructores**: cómo se inicializan los objetos.
+3. **Métodos**: el comportamiento de la clase.
+
+## Modificadores de acceso
+
+Un modificador de acceso establece si se permite el acceso (y con qué nivel) a una clase o a un elemento de una clase, como pueden ser atributos o métodos.
+
+Java provee cuatro modificadores de acceso:
+
+* **public**: el elemento es de acceso público. Aplicado sobre la definición de una clase, permite que la misma sea utilizada en todo el proyecto.
+* **private**: generalmente utilizado sobre los atributos de una clase (también sobre algunos métodos), no permite el acceso a esos elementos desde afuera de la clase. Es el nivel de acceso más restrictivo.
+* **protected**: más utilizado al implementar [herencia](#herencia), permite que los atributos o métodos de una superclase sean accedidos por las clases que hereden de ella.
+* **default** (o "de paquete"): cuando no escribimos ninguno de los anteriores, se aplica este nivel de acceso. Permite el acceso desde todas las clases del mismo paquete (package). No existe una palabra reservada `default` para esto: simplemente no se escribe nada.
+
+## Atributos
+
+Al principio de la clase se escriben los atributos (variables) y constantes que pueda tener. Los atributos, en Java, deben tener el modificador de acceso `private` para cumplir con el concepto de [encapsulamiento](./introduccion-a-java.html#encapsulamiento). Los atributos estarán presentes en todos los objetos que se creen a partir de la clase.
+
+Las constantes definidas en la clase pueden ser `private` o `public`, según sea necesario.
+
+Los atributos de una clase raramente se inicializan al momento de declararlos: esa tarea se deja para cada constructor.
 
 ```java
 public class Perro {
-    
+
     // Atributos y constantes
     private String nombre;
     private int edad;
@@ -99,56 +62,75 @@ public class Perro {
 }
 ```
 
-Siguiendo con el orden de los elementos en una clase, como segundo se suelen escibir los constructores.
+Notar que el atributo `duenio` no es un tipo de dato primitivo ni un `String`: es de tipo `Persona`, otra clase que definimos nosotros. Una clase puede tener como atributo un objeto de otra clase.
 
 ```java
-public class Perro {
-    
-    // Atributos y constantes
+public class Persona {
+
     private String nombre;
-    private int edad;
-    private Persona duenio;
 
-    // Constructores
-    public Perro () {
-        // Como no recibe parámetros, inicializamos los atributos con valores que nos sirvan
-        nombre = "";
-        edad = 0;
-        duenio = null;
+    public Persona (String nombre) {
+        this.nombre = nombre;
     }
 
-    public Perro (String nombreDelPerro, int edadDelPerro) {
-        // Si recibimos parámetros, lo habitual es utilizarlos para inicializar los atributos
-        nombre = nombreDelPerro;
-        edad = edadDelPerro;
-        duenio = null; // si no recibimos un parámetro para algún atributo (como en este caso), podemos asignar algo que nos sirva
+    public String getNombre () {
+        return this.nombre;
     }
-
-    public Perro (String nombreDelPerro, int edadDelPerro, Persona duenioDelPerro) {
-        // Este constructor recibe como parámetros, todos los atributos de la clase Perro
-        nombre = nombreDelPerro;
-        edad = edadDelPerro;
-        duenio = duenioDelPerro;
-    }
-
 }
 ```
 
-> **Nota:** es importante notar que los parámetros tienen un nombre distinto al nombre de los atributos.
+> **Nota:** en general, el uso de caracteres especiales como la `ñ` puede traer inconvenientes. En su reemplazo se puede usar `n`, o bien `ni` (como en `duenio`).
 
-Es común que los constructores reciban parámetros con el mismo nombre que los atributos de la clase. En este caso una asignación como la siguiente NO tiene efecto, ya que,  representan a la misma variable (intenta asignar el contenido a si misma).
+## Constructor
+
+Es una especie de método (aunque tiene su propia forma de definirse) que nos permite inicializar los objetos que se creen a partir de la clase. Podemos tener más de un constructor.
+
+Un constructor posee un modificador de acceso (generalmente `public`), lleva **el mismo nombre que la clase** y no declara ningún tipo de dato de retorno (ni siquiera `void`). Se completa con dos llaves que delimitan las sentencias que se ejecutarán al utilizarlo.
+
+```java
+// Considerando que la clase se llama Perro, definimos un constructor sin parámetros
+
+public Perro () {
+    // Líneas de código del constructor
+}
+```
+
+El constructor más común es el que no recibe parámetros. Si no escribimos **ningún** constructor, Java nos provee uno vacío de manera implícita. Pero en cuanto definimos al menos un constructor con parámetros, ese constructor implícito deja de existir: si además lo necesitamos, tenemos que escribirlo nosotros.
+
+Al igual que con los métodos, es posible tener más de un constructor (sobrecarga de constructores). Como todos llevan el mismo nombre, deben diferenciarse en la cantidad de parámetros o en los tipos de dato de esos parámetros y su orden (los nombres de los parámetros no cuentan).
+
+```java
+// Constructor que recibe un parámetro
+public Perro (String nombre) {
+    // Líneas de código del constructor
+}
+
+// Constructor que recibe dos parámetros
+public Perro (String nombre, int edad) {
+    // Líneas de código del constructor
+}
+
+// Constructor que además recibe un parámetro de una clase personalizada
+public Perro (String nombre, int edad, Persona duenio) {
+    // Líneas de código del constructor
+}
+```
+
+Es importante saber que, en la creación de un objeto, se utiliza **un solo** constructor.
+
+### La palabra reservada this
+
+Lo habitual es que los constructores reciban parámetros con el mismo nombre que los atributos de la clase. En ese caso, una asignación como la siguiente NO tiene efecto: el nombre `nombre` se refiere al parámetro, así que la línea le asigna el parámetro a sí mismo y el atributo queda sin tocar.
 
 ```java
 public class Perro {
-    
-    // Atributos y constantes
+
     private String nombre;
     private int edad;
     private Persona duenio;
 
-    // Constructores
     public Perro (String nombre, int edad, Persona duenio) {
-        // Estas asignaciones no tiene efecto
+        // Estas asignaciones no tienen efecto sobre los atributos
         nombre = nombre;
         edad = edad;
         duenio = duenio;
@@ -157,23 +139,19 @@ public class Perro {
 }
 ```
 
-En el ejemplo anterior, no se puede determinar qué se asigna a quién. Para solventar este escenario, se nos provee de la palabra reservada `this`, la cual solo puede utizarse dentro de las clases para hacer referencia a un atributo o método propio de la clase, con la salvedad de que _el atributo o método no debe ser estático_.
+Para resolver este escenario, Java nos provee la palabra reservada `this`, que dentro de una clase hace referencia al objeto actual, con la salvedad de que *no puede usarse para atributos ni métodos estáticos*.
 
-La palabra reservada `this` debe estar seguida de un punto `this.` y luego el atributo o método al cual nos queremos referir.
-
-> **Nota:** Es recomendable siempre usar `this.` para referirse a un elemento propio de la clase, no hay quien pierde...
+La palabra reservada `this` debe ir seguida de un punto y luego el atributo o método al que nos queremos referir: `this.nombre` es el atributo, mientras que `nombre` a secas es el parámetro.
 
 ```java
 public class Perro {
-    
-    // Atributos y constantes
+
     private String nombre;
     private int edad;
     private Persona duenio;
 
-    // Constructores
     public Perro (String nombre, int edad, Persona duenio) {
-        // Estas asignaciones son válidas por incluir la palabra reservada this
+        // Estas asignaciones sí modifican los atributos, por incluir la palabra reservada this
         this.nombre = nombre;
         this.edad = edad;
         this.duenio = duenio;
@@ -182,15 +160,13 @@ public class Perro {
 }
 ```
 
-Para completar las "secciones de una clase", en tercer lugar de ubicación se suelen colocar los métodos que pueda incluir la clase. Estos métodos formarán el comportamiento (o acciones) posibles de realizar por cada objeto creado a partir de esta clase.
+> **Recomendación:** conviene usar siempre `this.` para referirse a un elemento propio de la clase, aunque no haya ambigüedad. Deja explícito que estamos trabajando con un atributo y no con una variable local.
 
-Los métodos deben incluir un modificador de acceso, el cual determinará si el método puede utilizarse solo dentro de la clase (`private`) o se permite utilizar por fuera de la clase (`public`). 
-
-Cabe destacar que los métodos definidos como `public`, serán invocados por los objetos creados a partir de la clase, no por la clase en si misma. Mientras que los métodos definidos como `private`, podrán utilizarse dentro de la clase. Lo más habitual es que se invoquen desde algún constructor, o bien, desde otros métodos existentes en la clase.
+Con esto, los tres constructores de la clase quedan así:
 
 ```java
 public class Perro {
-    
+
     // Atributos y constantes
     private String nombre;
     private int edad;
@@ -199,41 +175,50 @@ public class Perro {
     // Constructores
     public Perro () {
         // Como no recibe parámetros, inicializamos los atributos con valores que nos sirvan
-        nombre = "";
-        edad = 0;
-        duenio = null;
+        this.nombre = "";
+        this.edad = 0;
+        this.duenio = null;
     }
 
     public Perro (String nombre, int edad) {
         // Si recibimos parámetros, lo habitual es utilizarlos para inicializar los atributos
         this.nombre = nombre;
         this.edad = edad;
-        this.duenio = null; // si no recibimos un parámetro para algún atributo (como en este caso), podemos asignar algo que nos sirva
+        this.duenio = null; // Si no recibimos un parámetro para algún atributo, podemos asignarle algo que nos sirva
     }
 
     public Perro (String nombre, int edad, Persona duenio) {
-        // Este constructor recibe como parámetros, todos los atributos de la clase Perro
+        // Este constructor recibe como parámetros todos los atributos de la clase Perro
         this.nombre = nombre;
         this.edad = edad;
         this.duenio = duenio;
     }
 
-    // Métodos
-    public void cumplirAnios() {
-        this.edad++;
-    }
-
 }
 ```
-> **Nota:** En general el uso de caracteres especiales como la `ñ` puede traer inconvenientes. En su reemplazo, se puede usar la `n`, o bien, `ni`.
 
-Dentro de una clase podemos definir tantos métodos como necesitemos. Una forma de ordenarlos es escribir los métodos públicos antes que los privados. Esto nos permite ver, dentro de la clase, primero los métodos que pueden utilizarse de manera pública, y si necesitamos ver alguno privado, simplemente bajamos hasta la sección de métodos privados.
+## Métodos
 
-* Getters y Setters
+En tercer lugar se ubican los métodos que pueda incluir la clase. Estos métodos formarán el comportamiento (o las acciones) que podrá realizar cada objeto creado a partir de esta clase.
 
-Continuando con el concepto de [encapsulamiento](./conceptos-basicos.html#Encapsulamiento) y considerando que los atributos de una clase (variables de caracter privado) a los cuales solo las podemos "utilizar" de la clase, debemos contar con una forma de interactuar (obtener el contenido actual o asignar un nuevo valor) con dichos atributos. Esta tarea la realizaremos mediante métodos públicos.
+Los métodos deben incluir un modificador de acceso, que determinará si el método puede utilizarse solo dentro de la clase (`private`) o también desde afuera (`public`).
 
-Para obtener el contenido de una variable asignado por ejemplo en su construcción, deberemos entonces generar un método que nos facilite el objetivo.
+Los métodos definidos como `public` serán invocados por los objetos creados a partir de la clase, no por la clase en sí misma. Los métodos `private` solo pueden usarse dentro de la clase: lo más habitual es que se invoquen desde algún constructor o desde otros métodos de la misma clase.
+
+```java
+    // Método que incrementa en 1 la edad del perro
+    public void cumplirAnios () {
+        this.edad++;
+    }
+```
+
+Dentro de una clase podemos definir tantos métodos como necesitemos. Una forma de ordenarlos es escribir los métodos públicos antes que los privados, para ver primero lo que la clase ofrece hacia afuera.
+
+### Getters y Setters
+
+Continuando con el concepto de [encapsulamiento](./introduccion-a-java.html#encapsulamiento): los atributos de una clase son privados, con lo cual solo se pueden usar desde adentro de la clase. Necesitamos entonces alguna forma de interactuar con ellos desde afuera (obtener su contenido actual o asignarles un nuevo valor). Esa tarea la realizamos mediante métodos públicos.
+
+Para obtener el contenido de un atributo debemos generar un método que nos devuelva ese dato:
 
 ```java
     public String obtenerNombre () {
@@ -241,9 +226,9 @@ Para obtener el contenido de una variable asignado por ejemplo en su construcci�
     }
 ```
 
-Esta tarea tiene un fin determinado. Definiendo un método no permitimos acceder directamente al contenido del atributo de clase. Además, tenemos el control absoluto dee cómo se realizará la obtención, esto quiere decir, que quien define el método, puede (o no) agregar líneas de código que permita la correcta obtención del dato, o bien, devolver un dato apropiado.
+Definiendo un método no permitimos acceder directamente al atributo. Además, tenemos control absoluto sobre cómo se realiza la obtención: quien define el método puede agregar las líneas de código que hagan falta para devolver un dato apropiado.
 
-Entonces ¿De donde viene el concepto de `Getter`? Get en inglés significa "obtener" y es habitual encontrarse con un método como:
+Entonces, ¿de dónde viene el concepto de `Getter`? *Get* en inglés significa "obtener", y es habitual encontrarse con un método como:
 
 ```java
     public String getNombre () {
@@ -251,72 +236,16 @@ Entonces ¿De donde viene el concepto de `Getter`? Get en inglés significa "obt
     }
 ```
 
-Conceptualmente, este método y el anterior, representan la misma operación. La única diferencia es su nomenclatura.
+Conceptualmente este método y el anterior representan la misma operación; la única diferencia es su nomenclatura. La nomenclatura de un "Getter" es `getNombre`, donde "get" indica que vamos a obtener un dato y "Nombre" hace referencia al atributo del cual lo obtenemos.
 
-En Java, se relega la responsabilidad de un método "Getter" a solo devolver el dato del atributo en cuestión. La nomenclatura de un método "Getter" suele ser `getNombre` donde "get" nos indica que vamos a obtener un dato y "Nombre" hace referencia al atributo del cual queremos obtener el dato o valor.
+Puntos a tener en cuenta sobre un "Getter":
 
-Cabe destacar que el tipo de dato que devuelve el método "Getter", debe ser el mismo que posee el atributo en su definición.
+* El tipo de dato que devuelve debe ser el mismo que el del atributo.
+* Al declarar un tipo de dato de retorno (no `void`), siempre debe incluir la palabra reservada `return`.
+* En Java, la responsabilidad de un "Getter" es únicamente devolver el dato del atributo en cuestión.
+* En general tenemos tantos "Getters" como atributos. Si no queremos permitir que se obtenga el valor de un atributo, simplemente no escribimos su "Getter".
 
-Un "Getter", al definir un tipo de dato de retorno (no void), debe poseer siempre la palabra reservada `return` acompañada del atributo necesario para satisfacer la operación. En este caso `this.nombre` (atributo de la clase).
-
-En general, tenemos tantos "Getters" como atributos de clase. No obstante, si no queremos permitir que alguien pueda obtener el dato o valor de un atributo de clase, simplemente no escribimos el método "Getter" correspondiente.
-
-Completamos el ejemplo:
-
-```java
-public class Perro {
-    
-    // Atributos y constantes
-    private String nombre;
-    private int edad;
-    private Persona duenio;
-
-    // Constructores
-    public Perro () {
-        // Como no recibe parámetros, inicializamos los atributos con valores que nos sirvan
-        nombre = "";
-        edad = 0;
-        duenio = null;
-    }
-
-    public Perro (String nombre, int edad) {
-        // Si recibimos parámetros, lo habitual es utilizarlos para inicializar los atributos
-        this.nombre = nombre;
-        this.edad = edad;
-        this.duenio = null; // si no recibimos un parámetro para algún atributo (como en este caso), podemos asignar algo que nos sirva
-    }
-
-    public Perro (String nombre, int edad, Persona duenio) {
-        // Este constructor recibe como parámetros, todos los atributos de la clase Perro
-        this.nombre = nombre;
-        this.edad = edad;
-        this.duenio = duenio;
-    }
-
-    // Métodos
-
-    // Getter del atributo de clase "nombre"
-    public String getNombre () {
-        return this.nombre;
-    }
-
-    // Getter del atributo de clase "edad"
-    public int getEdad () {
-        return this.edad;
-    }
-
-    // Getter del atributo de clase "duenio"
-    public Persona getDuenio () {
-        return this.duenio;
-    }
-
-    public void cumplirAnios() {
-        this.edad++;
-    }
-
-}
-```
-Por su contraparte, podemos permitir (mediante un método) cambiar o asignar el contenido de un atributo de clase:
+Por su contraparte, podemos permitir que se cambie el contenido de un atributo:
 
 ```java
     public void asignarNombre (String nombre) {
@@ -324,9 +253,7 @@ Por su contraparte, podemos permitir (mediante un método) cambiar o asignar el 
     }
 ```
 
-El método anterior es un "Setter". La palabra Set deberá comprenderse como "asignar". Permitiendo entonces (en caso de escribir el método) cambiar el contenido (dato o valor) de un atributo de clase, para mantener el concepto de [encapsulamiento](./conceptos-basicos.html#Encapsulamiento).
-
-La mayoría de las veces encontraremos que la nomenclatura de un "Setter", es similar a la del "Getter", donde definimos el nombre del método como `setNombre`. La palabra "set" nos indica que asignaremos algo al atributo de clase, mientras que la palabra "Nombre", nos indica a cuál atributo le asignamos algo.
+El método anterior es un "Setter". La palabra *set* debe comprenderse como "asignar". La nomenclatura habitual es análoga a la del "Getter": definimos el nombre del método como `setNombre`, donde "set" indica que asignaremos algo y "Nombre" indica a cuál atributo.
 
 ```java
     public void setNombre (String nombre) {
@@ -334,88 +261,19 @@ La mayoría de las veces encontraremos que la nomenclatura de un "Setter", es si
     }
 ```
 
-Debemos notar que los "Setters" no devuelven un dato o valor (void), ya que, su objetivo es asignar. Dicho esto encontraremos que los métodos tienen la palabra reservada `void` en el lugar donde ponemos el tipo de dato que devolverá en caso de ser un "Getter" y reciben un parámetro (String nombre en el ejemplo). Este parámetro deberá contener el dato o valor que deseamos asignar al atributo de clase.
+Debemos notar que los "Setters" no devuelven ningún dato (`void`), ya que su objetivo es asignar, y que reciben un parámetro (`String nombre` en el ejemplo) con el dato que deseamos asignar al atributo.
 
-Completamos el ejemplo:
+> **Importante:** un "Getter" empieza con `get` y un "Setter" con `set`. Usar `get` para un método que asigna, o al revés, compila igual pero vuelve el código imposible de leer.
 
-```java
-public class Perro {
-    
-    // Atributos y constantes
-    private String nombre;
-    private int edad;
-    private Persona duenio;
+La única sentencia de un "Setter" suele ser la asignación del parámetro al atributo, aunque es posible agregar las líneas que necesitemos para garantizar que el dato asignado sea válido para nuestra clase.
 
-    // Constructores
-    public Perro () {
-        // Como no recibe parámetros, inicializamos los atributos con valores que nos sirvan
-        nombre = "";
-        edad = 0;
-        duenio = null;
-    }
-
-    public Perro (String nombre, int edad) {
-        // Si recibimos parámetros, lo habitual es utilizarlos para inicializar los atributos
-        this.nombre = nombre;
-        this.edad = edad;
-        this.duenio = null; // si no recibimos un parámetro para algún atributo (como en este caso), podemos asignar algo que nos sirva
-    }
-
-    public Perro (String nombre, int edad, Persona duenio) {
-        // Este constructor recibe como parámetros, todos los atributos de la clase Perro
-        this.nombre = nombre;
-        this.edad = edad;
-        this.duenio = duenio;
-    }
-
-    // Métodos
-    
-    // Getter del atributo de clase "nombre"
-    public String getNombre () {
-        return this.nombre;
-    }
-
-    // Getter del atributo de clase "edad"
-    public int getEdad () {
-        return this.edad;
-    }
-
-    // Getter del atributo de clase "duenio"
-    public Persona getDuenio () {
-        return this.duenio;
-    }
-
-    // Setter del atributo de clase "nombre"
-    public void getNombre (String nombre) {
-        this.nombre = nombre;
-    }
-
-    // Setter del atributo de clase "edad"
-    public void getEdad (int edad) {
-        this.edad = edad;
-    }
-
-    // Setter del atributo de clase "duenio"
-    public void getDuenio (Persona duenio) {
-        this.duenio = duenio;
-    }
-
-    public void cumplirAnios() {
-        this.edad++;
-    }
-
-}
-```
-
-En el ejemplo antes definido, notamos que la única sentencia de código, en un "Setter", es una asignación del dato o valor que llega en el parámetro, hacia el atributo de clase. Esta suele ser la única sentencia incluida en un "Setter", aunque es posible agregar las líneas de código que necesitemos para garantizar que el dato asignado al atributo de clase sea "correcto" para nuestra clase.
-
-Si bien la validación de información suele ser previa a la invocación de un "Setter", pueden encontrarse algunos ejemplos que agreguen líneas de código en un "Setter":
+Si bien la validación de información suele ser previa a la invocación de un "Setter", pueden encontrarse ejemplos como este:
 
 ```java
-    // Setter del atributo de clase "edad", con una ligera validación
-    public void getEdad (int edad) {
+    // Setter del atributo "edad", con una ligera validación
+    public void setEdad (int edad) {
 
-        if(edad > 0) {
+        if (edad > 0) {
             this.edad = edad;
         } else {
             this.edad = 0;
@@ -423,351 +281,219 @@ Si bien la validación de información suele ser previa a la invocación de un "
     }
 ```
 
-En el ejemplo anterior, validamos que el dato o valor que llega en el parámetro sea mayor a cero. Si no fuera el caso (el dato es menor a cero), entonces asignamos al atributo de clase el literal cero.
+En el ejemplo anterior validamos que el dato que llega en el parámetro sea mayor a cero. Si no lo fuera, asignamos al atributo el literal cero. Repitiendo: esta práctica no es la más habitual, pero puede verse en algunos escenarios.
 
-Repitiendo, esta práctica no es la mas habitual, pero puede verse en algunos escenarios.
+### Otros métodos
 
-Hasta este punto, definimos una clase propia, con sus atributos (características), sus "Getters" y "Setters" para los atributos y un método llamado `cumplirAnios`.
-Este método también realiza una operación sobre un atributo de la clase (incrementa en 1 el dato o valor del atributo edad). Este método no es considerado un "Setter", si no que, forma parte del conjunto de métodos que definen el "comportamiento" de la clase.
+No todo método es un "Getter" o un "Setter". El método `cumplirAnios` que vimos antes también opera sobre un atributo (incrementa la edad en 1), pero no es un "Setter": forma parte del conjunto de métodos que definen el comportamiento de la clase.
 
-Agregamos otro método que agrega "comportamiento":
+Podemos agregar los métodos que necesitemos, devuelvan o no el valor de un atributo:
 
 ```java
-public class Perro {
-    
-    // Atributos y constantes
-    private String nombre;
-    private int edad;
-    private Persona duenio;
-
-    // Constructores
-    public Perro () {
-        // Como no recibe parámetros, inicializamos los atributos con valores que nos sirvan
-        nombre = "";
-        edad = 0;
-        duenio = null;
-    }
-
-    public Perro (String nombre, int edad) {
-        // Si recibimos parámetros, lo habitual es utilizarlos para inicializar los atributos
-        this.nombre = nombre;
-        this.edad = edad;
-        this.duenio = null; // si no recibimos un parámetro para algún atributo (como en este caso), podemos asignar algo que nos sirva
-    }
-
-    public Perro (String nombre, int edad, Persona duenio) {
-        // Este constructor recibe como parámetros, todos los atributos de la clase Perro
-        this.nombre = nombre;
-        this.edad = edad;
-        this.duenio = duenio;
-    }
-
-    // Métodos
-
-    // Getter del atributo de clase "nombre"
-    public String getNombre () {
-        return this.nombre;
-    }
-
-    // Getter del atributo de clase "edad"
-    public int getEdad () {
-        return this.edad;
-    }
-
-    // Getter del atributo de clase "duenio"
-    public Persona getDuenio () {
-        return this.duenio;
-    }
-
-    // Setter del atributo de clase "nombre"
-    public void getNombre (String nombre) {
-        this.nombre = nombre;
-    }
-
-    // Setter del atributo de clase "edad"
-    public void getEdad (int edad) {
-        this.edad = edad;
-    }
-
-    // Setter del atributo de clase "duenio"
-    public void getDuenio (Persona duenio) {
-        this.duenio = duenio;
-    }
-
-    
-    public void cumplirAnios() {
-        this.edad++;
-    }
-
-    // Nuevo método agregado
     public String ladrar () {
-        return "Guau!";
+        return "Guau!"; // No devuelve un atributo, sino un literal String
     }
-
-}
 ```
 
-En el ejemplo anterior notamos que el método "ladrar" no devuelve el dato o valor de un atributo de clase. En su lugar devuelve un literal String.
-
-Esto nos indica que podemos agregar los métodos que obtengan o asignen datos según necesitemos, por fuera de los "Getters" y "Setters".
-
-Si, por ejemplo, necesitamos mostrar todos los datos asignados a los atributos de la clase, podemos definir un método como el siguiente:
+Si, por ejemplo, necesitamos mostrar todos los datos del perro, podemos definir un método como el siguiente:
 
 ```java
-public class Perro {
-    
-    // Atributos y constantes
-    private String nombre;
-    private int edad;
-    private Persona duenio;
-
-    // Constructores
-    public Perro () {
-        // Como no recibe parámetros, inicializamos los atributos con valores que nos sirvan
-        nombre = "";
-        edad = 0;
-        duenio = null;
-    }
-
-    public Perro (String nombre, int edad) {
-        // Si recibimos parámetros, lo habitual es utilizarlos para inicializar los atributos
-        this.nombre = nombre;
-        this.edad = edad;
-        this.duenio = null; // si no recibimos un parámetro para algún atributo (como en este caso), podemos asignar algo que nos sirva
-    }
-
-    public Perro (String nombre, int edad, Persona duenio) {
-        // Este constructor recibe como parámetros, todos los atributos de la clase Perro
-        this.nombre = nombre;
-        this.edad = edad;
-        this.duenio = duenio;
-    }
-
-    // Métodos
-
-    // Getter del atributo de clase "nombre"
-    public String getNombre () {
-        return this.nombre;
-    }
-
-    // Getter del atributo de clase "edad"
-    public int getEdad () {
-        return this.edad;
-    }
-
-    // Getter del atributo de clase "duenio"
-    public Persona getDuenio () {
-        return this.duenio;
-    }
-
-    // Setter del atributo de clase "nombre"
-    public void getNombre (String nombre) {
-        this.nombre = nombre;
-    }
-
-    // Setter del atributo de clase "edad"
-    public void getEdad (int edad) {
-        this.edad = edad;
-    }
-
-    // Setter del atributo de clase "duenio"
-    public void getDuenio (Persona duenio) {
-        this.duenio = duenio;
-    }
-
-    
-    public void cumplirAnios() {
-        this.edad++;
-    }
-
-    public String ladrar () {
-        return "Guau!";
-    }
-
-    // Nuevo método agregado
     public String obtenerDatosDelPerro () {
         String datosDelPerro = "Nombre: " + this.nombre + ", Edad: " + this.edad;
         return datosDelPerro;
     }
-
-}
 ```
 
-Notamos entonces que podemos utilizar los atributos de la clase para forma un texto que nos indica el nombre y la edad del perro.
-En el método `obtenerDatosDelPerro`, definimos una variable local al método (datosDelPerro) la cual sólo puede ser utilizada dentro del método (dentro de sus llaves) y a la cual se asignan literales String concatenados con los datos correspondientes, para luego devolverlos con `return`.
+Acá declaramos una variable local al método (`datosDelPerro`), que solo puede utilizarse dentro de sus llaves, y le asignamos literales String concatenados con los atributos, para luego devolverla con `return`.
 
-Una forma abreviada puede ser la siguiente:
+Una forma abreviada, que evita declarar la variable local, es devolver la concatenación directamente:
 
 ```java
-    // Nuevo método agregado de manera abreviada
     public String obtenerDatosDelPerro () {
-        return datosDelPerro = "Nombre: " + this.nombre + ", Edad: " + this.edad;
+        return "Nombre: " + this.nombre + ", Edad: " + this.edad;
     }
 ```
 
-Donde simplemente devolvemos la concateniación de los lietarles String y los atributos de clase, evitando definir una variable local al método.
+### La clase completa
 
-## Objetos
-
-Entonces, ¿Cuál es el objetivo de definir una clase personalizada?
-
-La definición de una clase personalizada nos permite generar objetos los cuales adoptarán los atributos y métodos que definimos en la clase.
-
-Un objeto no es mas que una variable del tipo de la clase que definimos.
-
-```java
-    // Definición de una variable la cual será un objeto de tipo Perro.
-    Perro miPerro;
-```
-
-En este punto tenemos una variable de tipo "Perro", pero que aún no tiene nada asignado. Estas variables, cuando las definimos, no las podremos asignar con un dato o valor primitivo (o de tipo String), porque su tipo es "Perro".
-
-Para crear un objeto o "instanciar" (considerado como sinónimo), debemos entonces utilizar la palabra reservada `new` seguida del nombre de la clase `Perro` (en este ejemplo), y luego utilizar paréntesis de apertura y cierre.
-
-```java
-    // Creación de un objeto o instancia de la clase Perro.
-    Perro miPerro = new Perro ();
-```
-
-En el ejemplo anterior notamos que luego del caracter `=`, el cual utilizamos para asignar, tenemos algo diferente a lo antes visto. La asignación funciona de la misma manera, pero en lugar de asignar un dato de tipo primitiro (o String), asignamos el objeto o instancia de tipo Perro.
-
-La palabra reservada `new` es la encargada de reservar un espacio en la memoria del sistema operativo (propia para el programa cuando se ejecute) y colocar el objeto o instancia que estamos creando. Dicho espacio en memoria podrá almacenar, por ejemplo, todos los atributos que la clase defina.
-
-Podemos entonces instanciar más de un objeto:
-
-```java
-    // Creación de un objeto o instancia de la clase Perro.
-    Perro miPerro = new Perro ();
-
-    // Creación de un objeto o instancia que representa a otro perro
-    Perro miOtroPerro = new Perro ();
-```
-
-De esta forma podemos crear otro objeto perro con las mismas características y comportamiento que define la clase Perro.
-
-¿Dónde está lo divertido?
-
-Es importante notar que en la creación de los objetos, entre los paréntesis no hay datos `new Perro ()`. Esta línea de código hace uso del constructor, definido en la clase "Perro", que no recibe parámetros.
+Juntando todo lo visto hasta acá, la clase `Perro` queda así:
 
 ```java
 public class Perro {
-    
+
     // Atributos y constantes
     private String nombre;
     private int edad;
     private Persona duenio;
 
-    // Constructor utilizado en la creación de los objetos "miPerro" y "miOtroPerro" en el ejemplo anterior
+    // Constructores
     public Perro () {
-        // Como no recibe parámetros, inicializamos los atributos con valores que nos sirvan
-        nombre = "";
-        edad = 0;
-        duenio = null;
+        this.nombre = "";
+        this.edad = 0;
+        this.duenio = null;
     }
+
+    public Perro (String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.duenio = null;
+    }
+
+    public Perro (String nombre, int edad, Persona duenio) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.duenio = duenio;
+    }
+
+    // Métodos
+
+    // Getters
+    public String getNombre () {
+        return this.nombre;
+    }
+
+    public int getEdad () {
+        return this.edad;
+    }
+
+    public Persona getDuenio () {
+        return this.duenio;
+    }
+
+    // Setters
+    public void setNombre (String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEdad (int edad) {
+        this.edad = edad;
+    }
+
+    public void setDuenio (Persona duenio) {
+        this.duenio = duenio;
+    }
+
+    // Comportamiento
+    public void cumplirAnios () {
+        this.edad++;
+    }
+
+    public String ladrar () {
+        return "Guau!";
+    }
+
+    public String obtenerDatosDelPerro () {
+        return "Nombre: " + this.nombre + ", Edad: " + this.edad;
+    }
+
 }
 ```
 
-Siendo que, cuando el constructor vacío no recibe parámetros, los valores iniciales de los atributos de cada objeto o instancia, serán los que se asignaron en el constructor vacío (nombre es un literal String sin contenido, la edad es un literal cero y el duenio null). Estos valores representan al dato o valor que poseen los atributos de clase.
+## Objetos
 
-Podemos crear tantos objetos o instancias de la clase Perro que necesitemos.
+Entonces, ¿cuál es el objetivo de definir una clase personalizada?
 
-¿Dónde debemos crear objetos o instancias? Siempre dentro de algún método.
-
-¿Cómo obtenemos el nombre de un perro? Debemos invocar al método "Getter" que definimos para tal fin.
-
-Para ello, debemos escibir el nombre de la variable (miPerro), seguido de un `.` (punto) y luego el nombre del método que deseamos invocar (o llamar).
+Definir una clase nos permite generar objetos, que adoptarán los atributos y métodos declarados en ella. Un objeto no es más que una variable del tipo de la clase que definimos.
 
 ```java
-    // Creación de un objeto o instancia de la clase Perro.
-    Perro miPerro = new Perro ();
-    String nombreDeMiPerro = miPerro.getNombre(); // invocación al método getNombre() el cual devolverá el dato actual (en el atributo nombre) del objeto "miPerro"
-
-    // Creación de un objeto o instancia que representa a otro perro
-    Perro miOtroPerro = new Perro ();
-    String nombreDeMiOtroPerro = miPerro.getNombre(); // invocación al método getNombre() el cual devolverá el dato actual (en el atributo nombre) del objeto "miOtroPerro"
+    // Declaración de una variable que podrá contener un objeto de tipo Perro
+    Perro miPerro;
 ```
 
-En el ejemplo recien mostrado, se asigna a la variable `nombreDeMiPerro` de tipo String, el dato que posee el objeto "miPerro", en el atributo "nombre". Se asignará entonces el dato o valor `""` (String con contenido vacío).
+En este punto tenemos una variable de tipo `Perro`, pero que todavía no tiene nada asignado. A estas variables no podemos asignarles un dato primitivo (ni un `String`), porque su tipo es `Perro`.
 
-Por su parte, en la variable `nombreDeMiOtroPerro` de tipo String, se asigna el dato que posee el objeto "miOtroPerro", en el atributo "nombre". Se asignará entonces el dato o valor `""` (String con contenido vacío).
-
-¿Cómo cambiamos el nombre de un perro? Siendo que definimos un método "Setter" que permite asignar el atributo nombre, podemos hacer uso del "Setter".
-
-Para ello, debemos escibir el nombre de la variable (miPerro), seguido de un `.` (punto), luego el nombre del método que deseamos invocar (o llamar), debiendo indicar entre los paréntesis del método, el dato o valor que deseamos asignar.
+Para crear un objeto, o "instanciar" (considerado sinónimo), debemos utilizar la palabra reservada `new` seguida del nombre de la clase y de los paréntesis del constructor que queramos usar.
 
 ```java
-    // Creación de un objeto o instancia de la clase Perro.
-    Perro miPerro = new Perro ();
-    String nombreDeMiPerro = miPerro.getNombre(); // El contenido de nombreDeMiPerro es "" (vacio)
-    miPerro.setNombre("Firulais"); // Asignación de un nombre para mi objeto "miPerro"
-
-    // Creación de un objeto o instancia que representa a otro perro
-    Perro miOtroPerro = new Perro ();
-    String nombreDeMiOtroPerro = miPerro.getNombre(); // El contenido de nombreDeMiOtroPerro es "" (vacio)
-    miOtroPerro.setNombre("Cartucho"); // Asignación de un nombre para mi objeto "miOtroPerro"
+    // Creación de un objeto o instancia de la clase Perro
+    Perro miPerro = new Perro();
 ```
 
-Estas asignaciones colocarán los datos "Firulais" y "Cartucho" en los atributos "nombre" de cada objeto.
+La asignación funciona igual que siempre, solo que en lugar de asignar un dato primitivo asignamos el objeto recién creado.
 
-Si ahora los volvemos obtener los nombres dew cada objeto utilizando el "Getter" correspondiente, y asignamos a las variables definidas, cada objeto en su atributo "nombre" contendrá "Firulais" y "Cartucho" respectivamente.
+La palabra reservada `new` es la encargada de reservar un espacio en memoria para el objeto. Dicho espacio almacenará, por ejemplo, todos los atributos que la clase defina.
+
+Podemos entonces instanciar más de un objeto:
 
 ```java
-    // Creación de un objeto o instancia de la clase Perro.
-    Perro miPerro = new Perro ();
-    String nombreDeMiPerro = miPerro.getNombre(); // El contenido de nombreDeMiPerro es "" (vacio)
-    miPerro.setNombre("Firulais"); // Asignación de un nombre para mi objeto "miPerro"
-    nombreDeMiPerro = miPerro.getNombre(); // El contenido de nombreDeMiPerro es "Firulais"
-
-    // Creación de un objeto o instancia que representa a otro perro
-    Perro miOtroPerro = new Perro ();
-    String nombreDeMiOtroPerro = miPerro.getNombre(); // El contenido de nombreDeMiOtroPerro es "" (vacio)
-    miOtroPerro.setNombre("Cartucho"); // Asignación de un nombre para mi objeto "miOtroPerro"
-    nombreDeMiOtroPerro = miOtroPerro.getNombre(); // El contenido de nombreDeMiOtroPerro es "Cartucho"
+    Perro miPerro = new Perro();
+    Perro miOtroPerro = new Perro();
 ```
 
-> **Importante:** Esto nos deja ver que cada objeto o instancia posee las mismas características o comportamiento definidos en la clase "Perro", pero cada objeto o instancia, almacena datos distintos.
+De esta forma creamos dos perros con las mismas características y comportamiento definidos por la clase `Perro`, pero independientes entre sí.
 
-## Garbage collector
+Es importante notar que en `new Perro()` no hay datos entre los paréntesis: esta línea usa el constructor que no recibe parámetros. Los valores iniciales de los atributos de cada objeto serán entonces los que ese constructor asigna (`nombre` un String vacío, `edad` cero y `duenio` null).
 
-Como vimos en [Conceptos básicos](./conceptos-basicos.html#Variables), para la creación de una variable de tipo de dato primitivo, se reserva una porción de memoria donde se almacenará el dato o valor asignado a la variable. En el caso de objetos, esto funciona de manera similar, pero con un sector de memoria agregado, conocido como `Heap` (o montón).
+Si usamos otro constructor, los objetos nacen con los datos que le pasemos:
 
-Cuando creamos un objeto entonces, se reserva una porción de memoria en el `Stack` (o pila de memoria) para almacenar el dato o valor de cada atributo del objeto. En la clase "Perro" serán: nombre, edad y duenio. Así como también la variable de referencia "miPerro" (nombre de la variable que contiene al objeto).
+```java
+    Perro miPerro = new Perro("Firulais", 3);
+    Perro miOtroPerro = new Perro("Cartucho", 5, new Persona("Ana"));
+```
 
-Es importante recordar que en la pila de memoria `Stack` se almacenan tipos de dato primitivos
+Podemos crear tantos objetos o instancias de la clase `Perro` como necesitemos.
 
-En el `Heap` entonces, se almacenará el contenido de los objetos, pero de una manera particular. El `Heap` trabaja con un gran String (conocido como String pool) que posee los datos del objeto. Entonces existe una relación o referencia entre la variable del objeto "miPerro" almacenada en el "Stack" y los datos del objetos, almacenados en el "Heap".
+¿Dónde debemos crear objetos? Siempre dentro de algún método.
 
-Como vimos antes, la pila de memoria o Stack se libera cuando un método termina de utilizar las variables o bien, se finaliza la ejecución del programa. Esto genera que la pila de memoria se libere, rompiendo las referencias, pero la memoria "Heap", no libera la memoria ocupada por los datos del objeto de manera automática.
+### Usar los métodos de un objeto
 
-La función del "Garbage collector" es liberar los objetos alojados en el "Heap" que no tengan una referencia en el "Stack".
+¿Cómo obtenemos el nombre de un perro? Invocando al método "Getter" que definimos para tal fin. Para ello escribimos el nombre de la variable, seguido de un `.` (punto) y luego el nombre del método.
 
-Para más información pueden visitar: [Java Stack y Heap](https://www.baeldung.com/java-stack-heap).
+```java
+    Perro miPerro = new Perro();
+    String nombreDeMiPerro = miPerro.getNombre(); // Devuelve el dato actual del atributo nombre del objeto miPerro -> "" (vacío)
+
+    Perro miOtroPerro = new Perro();
+    String nombreDeMiOtroPerro = miOtroPerro.getNombre(); // Devuelve el dato actual del atributo nombre del objeto miOtroPerro -> "" (vacío)
+```
+
+¿Cómo cambiamos el nombre de un perro? Usando el "Setter", indicando entre los paréntesis el dato que deseamos asignar.
+
+```java
+    Perro miPerro = new Perro();
+    miPerro.setNombre("Firulais"); // Asignación de un nombre para el objeto miPerro
+
+    Perro miOtroPerro = new Perro();
+    miOtroPerro.setNombre("Cartucho"); // Asignación de un nombre para el objeto miOtroPerro
+```
+
+Si ahora volvemos a obtener los nombres de cada objeto con su "Getter", cada uno devolverá el dato que le asignamos:
+
+```java
+    Perro miPerro = new Perro();
+    String nombreDeMiPerro = miPerro.getNombre(); // El contenido es "" (vacío)
+    miPerro.setNombre("Firulais");
+    nombreDeMiPerro = miPerro.getNombre(); // El contenido ahora es "Firulais"
+
+    Perro miOtroPerro = new Perro();
+    String nombreDeMiOtroPerro = miOtroPerro.getNombre(); // El contenido es "" (vacío)
+    miOtroPerro.setNombre("Cartucho");
+    nombreDeMiOtroPerro = miOtroPerro.getNombre(); // El contenido ahora es "Cartucho"
+```
+
+> **Importante:** cada objeto o instancia posee las mismas características y el mismo comportamiento definidos en la clase `Perro`, pero **cada uno almacena sus propios datos**.
 
 ## Métodos y atributos estáticos
 
-Vimos que en una clase podemos definir atributos y métodos que serán parte de los objetos creados o instanciados a partir de dicha clase.
+Vimos que en una clase podemos definir atributos y métodos que serán parte de los objetos creados a partir de ella. ¿Y si necesitamos que un atributo o método sea común a todos los objetos, es decir, que le pertenezca a la clase y no a cada instancia?
 
-Y que haríamos si necesitamos que un atributo o método sea común a todas los objetos creados, es decir, le pertenezca estrictamente a la clase.
+Java, así como otros lenguajes de programación, provee una palabra reservada para tal fin: `static`. Puede utilizarse con atributos, constantes o métodos.
 
-Java, así como otros lenguajes de programación, provee de una palabra reservada para tal fin: `static`. Esta palabra reservada puede ser utilizada con atributos, constantes o métodos.
-
-Siendo que la palabra reservada `this` es utilizada para referenciar a un atributo o método no estático de la clase, no debemos utilizarla para referirnos a un atributo o método estático. Si lo hacemos obtendremos una advertencia (warning) que nos indicará que, debemos utilizar dicho elemento de manera estática. Esa forma es utilizar el atributo o clase directamente sin anteponer `this.`.
+Siendo que la palabra reservada `this` referencia al objeto actual, no debemos utilizarla para referirnos a un elemento estático: los elementos estáticos se usan directamente por su nombre, o anteponiendo el nombre de la clase.
 
 ```java
 public class Perro {
-    
-    // Definición de una variable estática, perteneciente a la clase
-    private static int identificador = 1; // Para este ejemplo, le asignamos un literal entero para inicializar la variable estática
 
-    // Atributos y constantes
+    // Atributo estático, perteneciente a la clase y compartido por todos los objetos
+    private static int identificador = 1;
+
+    // Atributos de cada objeto
     private int id;
     private String nombre;
     private int edad;
     private Persona duenio;
 
-    // Constructor utilizado en la creación de los objetos "miPerro" y "miOtroPerro" en el ejemplo anterior
     public Perro () {
-        // Como no recibe parámetros, inicializamos los atributos con valores que nos sirvan
         this.id = obtenerSiguienteIdentificador(); // Asignamos el siguiente identificador
         this.nombre = "";
         this.edad = 0;
@@ -776,18 +502,165 @@ public class Perro {
 
     // Método estático perteneciente solo a la clase (no a los objetos creados)
     private static int obtenerSiguienteIdentificador () {
-        return identificador++;
+        return identificador++; // Devuelve el valor actual y después lo incrementa
     }
 }
 ```
 
-En el ejemplo anterior, cada vez que se cree un objeto utilizando el constructor vacío, se asignará un identificador. Dicho identificador será un número correlativo (se incrementa de 1 en 1). Entonces el primer objeto creado tendrá id 1, el segundo id 2, el tercero id 3 y así sucesivamente. 
+En el ejemplo anterior, cada vez que se crea un objeto se le asigna un identificador correlativo: el primer perro tendrá id 1, el segundo id 2, el tercero id 3 y así sucesivamente. El atributo `identificador` es uno solo para toda la clase, mientras que `id` es distinto en cada objeto.
+
+Los métodos estáticos se invocan usando el nombre de la clase, sin necesidad de crear ningún objeto. Es exactamente lo que hacemos cuando escribimos `Math.abs(-1)` o `Integer.parseInt("5")`.
+
+> **Importante:** un método estático no puede usar atributos ni métodos no estáticos de la clase, porque no está asociado a ningún objeto en particular. El caso más conocido es `main`, que es estático: por eso, para usar nuestras clases desde ahí, primero hay que crear objetos.
+
+## Herencia
+
+La [herencia](https://es.wikipedia.org/wiki/Herencia_(inform%C3%A1tica)) nos permite definir una clase general y, a partir de ella, clases más específicas que reutilizan sus atributos y métodos. La clase general se llama **superclase** (o clase padre) y la específica **subclase** (o clase hija).
+
+Para indicar que una clase hereda de otra usamos la palabra reservada `extends`.
+
+Supongamos que además de perros queremos representar gatos. Ambos son animales: tienen nombre y edad, y ambos cumplen años. Lo que cambia es cómo hacen ruido.
+
+```java
+public class Animal {
+
+    // protected permite que las subclases accedan a estos atributos
+    protected String nombre;
+    protected int edad;
+
+    public Animal (String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public String getNombre () {
+        return this.nombre;
+    }
+
+    public int getEdad () {
+        return this.edad;
+    }
+
+    public void cumplirAnios () {
+        this.edad++;
+    }
+
+    public String hacerRuido () {
+        return "...";
+    }
+}
+```
+
+Ahora `Perro` y `Gato` pueden extender `Animal`:
+
+```java
+public class Perro extends Animal {
+
+    public Perro (String nombre, int edad) {
+        super(nombre, edad); // Invoca al constructor de la superclase
+    }
+
+    @Override
+    public String hacerRuido () {
+        return "Guau!";
+    }
+}
+```
+
+```java
+public class Gato extends Animal {
+
+    public Gato (String nombre, int edad) {
+        super(nombre, edad);
+    }
+
+    @Override
+    public String hacerRuido () {
+        return "Miau!";
+    }
+}
+```
+
+Elementos nuevos en estos ejemplos:
+
+* **`extends Animal`** indica que la clase hereda de `Animal`. `Perro` y `Gato` cuentan con `nombre`, `edad`, `getNombre()`, `getEdad()` y `cumplirAnios()` sin necesidad de volver a escribirlos.
+* **`super(...)`** invoca al constructor de la superclase. Debe ser la primera sentencia del constructor de la subclase. También podemos usar `super.` para invocar un método de la superclase.
+* **`@Override`** es una anotación que indica que estamos reescribiendo (sobrescribiendo) un método que ya existe en la superclase. No es obligatoria, pero es muy recomendable: si nos equivocamos al escribir la firma del método, el compilador nos avisa.
+
+A esto de volver a definir en la subclase un método que ya existe en la superclase se lo llama **sobrescritura** (*override*). No hay que confundirlo con la [sobrecarga](./metodos.html#sobrecarga-de-métodosfunciones) (*overload*), que es tener varios métodos con el mismo nombre y distinta firma dentro de la misma clase.
+
+> **Nota:** en Java una clase solo puede extender de **una** superclase. Si una clase no extiende explícitamente de ninguna, hereda de `Object`, la clase de la que descienden todas las demás.
+
+## Polimorfismo
+
+El [polimorfismo](https://es.wikipedia.org/wiki/Polimorfismo_(inform%C3%A1tica)) es la posibilidad de tratar a objetos de tipos distintos como si fueran del mismo tipo, y que cada uno responda a su manera.
+
+Como `Perro` y `Gato` son `Animal`, una variable de tipo `Animal` puede contener cualquiera de los dos:
+
+```java
+    Animal unAnimal = new Perro("Firulais", 3);
+    Animal otroAnimal = new Gato("Michi", 2);
+
+    System.out.println(unAnimal.hacerRuido());  // Guau!
+    System.out.println(otroAnimal.hacerRuido()); // Miau!
+```
+
+Aunque las dos variables son de tipo `Animal` y la línea que las invoca es idéntica, cada objeto ejecuta **su propia** versión de `hacerRuido()`. Java resuelve en tiempo de ejecución cuál corresponde según el objeto real que hay del otro lado.
+
+Esto es especialmente útil cuando trabajamos con varios objetos a la vez, por ejemplo en un [array](./arrays.html):
+
+```java
+    Animal[] animales = new Animal[3];
+    animales[0] = new Perro("Firulais", 3);
+    animales[1] = new Gato("Michi", 2);
+    animales[2] = new Perro("Cartucho", 5);
+
+    // No necesitamos saber de qué tipo es cada uno: cada objeto responde como corresponde
+    for (Animal animal : animales) {
+        System.out.println(animal.getNombre() + ": " + animal.hacerRuido());
+    }
+```
+
+Si en algún momento necesitamos saber de qué clase es realmente un objeto, podemos usar el operador [instanceof](./operadores.html#operador-instanceof):
+
+```java
+    for (Animal animal : animales) {
+        if (animal instanceof Perro) {
+            System.out.println(animal.getNombre() + " es un perro");
+        }
+    }
+```
+
+## Garbage collector
+
+Como vimos en [conceptos básicos](./conceptos-basicos.html#dónde-viven-las-variables), para una variable de tipo primitivo se reserva una porción de memoria donde se almacena su valor, en un sector llamado `Stack` (pila). Con los objetos interviene además otro sector de memoria, conocido como `Heap` (montón).
+
+Cuando creamos un objeto, ocurren dos cosas:
+
+* En el **Heap** se reserva el espacio con el contenido del objeto: todos sus atributos (en la clase `Perro`: nombre, edad y duenio).
+* En el **Stack** se guarda únicamente la **variable de referencia** (`miPerro`), que no contiene al objeto sino la dirección donde el objeto vive en el Heap.
+
+Por eso, cuando asignamos un objeto a otra variable, no se copia el objeto: las dos variables terminan apuntando al mismo lugar del Heap.
+
+```java
+    Perro miPerro = new Perro("Firulais", 3);
+    Perro elMismoPerro = miPerro; // No se crea un perro nuevo: ambas variables referencian al mismo objeto
+
+    elMismoPerro.setNombre("Cartucho");
+    System.out.println(miPerro.getNombre()); // Muestra "Cartucho": es el mismo objeto
+```
+
+Como vimos antes, el Stack se libera automáticamente cuando un método termina. Eso rompe las referencias, pero el Heap **no** libera por sí solo la memoria ocupada por los objetos.
+
+La función del **Garbage collector** ("recolector de basura") es justamente esa: liberar los objetos alojados en el Heap que ya no tienen ninguna referencia que los apunte. Es automático, corre cuando la JVM lo considera necesario y no tenemos que hacer nada para activarlo.
+
+Para más información pueden visitar: [Java Stack y Heap](https://www.baeldung.com/java-stack-heap).
 
 ## enum
 
-Un enumerado o "enum", es una "clase especial" que limita básicamente, la creación de objetos. Solo se permite crear uno (en cierto modo) y será explícitamente la implementación del enum. Esto quiere decir, que el contenido del enum será "una única instancia".
+Un enumerado o "enum" es una "clase especial" que define un conjunto **fijo y conocido** de valores posibles. No se instancia con `new`: cada opción declarada es la única instancia de sí misma. Se usa cuando una variable solo puede tomar valores de una lista cerrada: los días de la semana, los estados de un pedido, los colores disponibles.
 
-Para definir un "enum", debemos reemplazar la palabra `class` por `enum`, el modificador de acceso deberá se `public`, el nombre del enum deberá comenzar con la primera letra en mayúscula, con las siguientes en minúscula. Si existe otra palabra en el nombre del enum, debe comenzar con mayúscula: `MiEnum`.
+Para definir un "enum" reemplazamos la palabra `class` por `enum`. El modificador de acceso suele ser `public` y el nombre sigue la misma convención [PascalCase](https://es.wikipedia.org/wiki/Camel_case) que las clases.
 
 ```java
 public enum Colores {
@@ -795,9 +668,9 @@ public enum Colores {
 }
 ```
 
-Los enums suelen declarar un contenido considerados "opciones", los cuales deben escribirse como las constantes, en letra mayúscula y separados por guiones bajos si existiera mas de una palabra.
+Las opciones del enum se escriben como las constantes: en mayúscula, separando las palabras con guiones bajos.
 
-Internamente, un enum asigna un número de orden para cada opción, comenzando por el cero. Este número de orden, nos permite acceder a la opción (por ejemplo).
+Internamente, un enum asigna un número de orden a cada opción, comenzando por el cero.
 
 ```java
 public enum Colores {
@@ -806,20 +679,35 @@ public enum Colores {
 }
 ```
 
-Dichas opciones o valores del enum, se usan de manera estática, es decir, cuando necesitemos usar alguna de las opciones, debemos escribir el nombre del enum, seguido de un `.` (punto) y luego la opción deseada.
+Las opciones de un enum se usan de manera estática: escribimos el nombre del enum, un `.` (punto) y luego la opción deseada.
 
 ```java
-    // Este código debe estar en un método por ejemplo
-    Colores.AZUL;
+    // Este código debe estar dentro de un método
+    Colores colorElegido = Colores.AZUL;
 ```
 
-Las opciones de un enum (ROJO, AZUL, etc) suelen contener algunos métodos de la clase String, como el método `equals()`.
+Al ser un tipo de dato, el enum también puede usarse en un `switch`, y es uno de sus usos más habituales:
 
-Es posible definirle constructores a un enum, con la salvedad de que deben ser privados (y así no permitir que se creen objetos). No obstante, si intentamos asignar un modificador de acceso `public` a un constructor, obtendremos un error.
+```java
+    switch (colorElegido) {
+        case ROJO:
+            System.out.println("Elegiste rojo");
+            break;
+        case AZUL:
+            System.out.println("Elegiste azul");
+            break;
+        default:
+            System.out.println("Elegiste otro color");
+    }
+```
+
+### Constructores y atributos de un enum
+
+Es posible definirle constructores a un enum, con la salvedad de que deben ser privados, para no permitir que se creen objetos. Si intentamos declarar el constructor como `public`, obtendremos un error de compilación. No hace falta escribir `private`: el enum lo asume automáticamente.
 
 ```java
 public enum Colores {
-    ROJO, AZUL, AMARILLO, BLANCO, NEGRO, AZUL_OSCURO
+    ROJO, AZUL, AMARILLO, BLANCO, NEGRO, AZUL_OSCURO;
 
     // Constructor del enum
     Colores () {
@@ -828,23 +716,21 @@ public enum Colores {
 }
 ```
 
-Al no definir un modificador de acceso privado, el enum lo asume automáticamente (private es opcional).
+¿Por qué podríamos necesitar un constructor?
 
-¿Por qué podriamos necesitar un constructor?
+Un enum permite definir atributos, igual que una clase. Un atributo muy habitual es de tipo `String` y se usa para darle una descripción legible a cada opción, ya que si mostramos una opción por pantalla se muestra su nombre tal cual (por ejemplo, `AZUL_OSCURO`), lo cual no siempre es prolijo.
 
-Un enum permite definir atributos (como en una clase) y utilizarlos dentro del enum. Un atributo muy habitual es de tipo String y se suele utilizar para darle alguna descripción a una opción del enum, ya que, si mostramos por pantalla una opción del enum, se muestra el nombre de la opción (Ejemplo: AZUL_OSCURO). Esto puede no ser muy estético cuando mostramos una opción.
-
-Podemos entonces agregar un parámetro de tipo String que permita dar el valor de descripción que deseamos a cada opción del enum. Sin olvidar que este parámetro debe asignarse a algún atributo del enum.
+Podemos entonces agregar un parámetro de tipo `String` al constructor, que asignaremos a un atributo del enum.
 
 ```java
 public enum Colores {
-    // Opcines del enum que asignan en su construccción una descripción amigable.
+    // Opciones del enum que asignan en su construcción una descripción amigable
     ROJO("Rojo"), // orden 0
     AZUL("Azul"), // orden 1
     AMARILLO("Amarillo"), // orden 2
     BLANCO("Blanco"), // orden 3
     NEGRO("Negro"), // orden 4
-    AZUL_OSCURO("Azul oscuro"); // orden 5. Se agrega ; (punto y coma) al final de la última opción del enum con constructor
+    AZUL_OSCURO("Azul oscuro"); // orden 5. Se agrega ; (punto y coma) al final de la última opción
 
     // Atributo del enum
     private String descripcion;
@@ -856,24 +742,21 @@ public enum Colores {
 }
 ```
 
-Es importante notar que al lado de cada opción del enum se proporciona el dato literal que formará parte de la opción del enum. Siendo ese lugar, el único donde se podrá usar el constructor, ya que, es privado. También es necesario finalizar las opciones con un `;` (punto y coma), caso contrario obtendremos un error.
+Es importante notar que al lado de cada opción se proporciona el dato que recibirá el constructor. Ese es el único lugar donde se puede usar el constructor, justamente porque es privado. También es necesario finalizar la lista de opciones con un `;` (punto y coma); caso contrario obtendremos un error.
 
-Si bien definimos un atributo con una descripción amigable, el enum no provee estrictamente de una forma de obtener dicha descripción. Podemos entonces crear un método para tal fin (un getter).
+El enum no provee una forma automática de obtener esa descripción, así que agregamos un "Getter":
 
 ```java
 public enum Colores {
-    // Opcines del enum que asignan en su construccción una descripción amigable.
-    ROJO("Rojo"), 
-    AZUL("Azul"), 
-    AMARILLO("Amarillo"), 
-    BLANCO("Blanco"), 
-    NEGRO("Negro"), 
-    AZUL_OSCURO("Azul oscuro"); // Se agrega ; (punto y coma) al final de la última opción del enum con constructor
+    ROJO("Rojo"),
+    AZUL("Azul"),
+    AMARILLO("Amarillo"),
+    BLANCO("Blanco"),
+    NEGRO("Negro"),
+    AZUL_OSCURO("Azul oscuro");
 
-    // Atributo del enum
     private String descripcion;
 
-    // Constructor del enum que recibe un parámetro y lo asigna al atributo
     Colores (String descripcion) {
         this.descripcion = descripcion;
     }
@@ -884,36 +767,37 @@ public enum Colores {
 }
 ```
 
-Si necesitamos mostrar por pantalla la descripcion de una opción del enum podemos usar el Getter.
+### Métodos que provee un enum
 
-Antes de mostrar como se obtiene la descripción, es importante conocer los métodos que provee el enum por defecto (en general usamos `values()` y `valueOf()`).
+Todo enum cuenta con algunos métodos por defecto. Los más usados son `values()` y `valueOf()`.
 
 ```java
-    // Métodos de un enum
-    Colores.values(); // Obtiene las opciones de un enum en un array (ver arrays)
+    Colores[] todosLosColores = Colores.values(); // Devuelve todas las opciones del enum en un array (ver arrays)
 
-    // El enum puede utilizarse como tipo de dato para definiar una variable del tipo del enum
-    Colores colorAzul = Colores.valueOf("AZUL"); // El método valueOf() permite obtener una opción del enum (de tipo enum), utilizando el nombre de la opción
-    colorAzul = Colores.values()[1]; // Es posible obtener una opción del enum por su número de orden (ver arrays).
+    // El enum puede utilizarse como tipo de dato para declarar una variable
+    Colores colorAzul = Colores.valueOf("AZUL"); // valueOf() devuelve la opción cuyo nombre coincide con el texto
+    colorAzul = Colores.values()[1]; // También podemos obtener una opción por su número de orden
 
-    // Obtención de la descrpción de una opción del enum Colores
-    String descripcionColorAzulOscuro = Colores.valueOf("AZUL_OSCURO").getDescripcion(); // A la variable "descripcionColorAzulOscuro" se le asigna "Azul oscuro"
+    int ordinalAzul = Colores.AZUL.ordinal(); // Devuelve 1: el número de orden de la opción
+    String nombreAzul = Colores.AZUL.name();  // Devuelve "AZUL": el nombre de la opción como String
 
-    int ordinalAzul = Colores.valueOf("AZUL").ordinal(); // Obtiene el número de orden de la opción AZUL del enum
-    String nombreAzul = Colores.valueOf("AZUL").name(); // Obtiene el nombre de la opción AZUL del enum como String
+    // Obtención de la descripción, usando el Getter que definimos nosotros
+    String descripcionAzulOscuro = Colores.AZUL_OSCURO.getDescripcion(); // Devuelve "Azul oscuro"
 ```
 
-> **Nota:** Escribiendo un punto luego del valor de un enum `Colores.valueOf("AZUL").` podemos ver todos los métodos posibles de utilizar.
+> **Nota:** `valueOf()` lanza un error en tiempo de ejecución si el texto no coincide exactamente con el nombre de ninguna opción (incluidas mayúsculas y minúsculas). Cuando conocemos la opción de antemano, es más seguro escribirla directamente: `Colores.AZUL`.
 
-El atributo de clase que en el ejemplo es de tipo String, no necesariamente debe ser String, puede ser int, double, float, etc, respetando el tipo de dato en el constructor y el valor que se pasa al constructor en el momento de crear la opción del enum. Es recomendable que sea de un tipo de dato primitivo o String.
+> **Nota:** escribiendo un punto luego de una opción del enum (`Colores.AZUL.`) el IDE nos muestra todos los métodos disponibles.
 
-Ejemplo con un tipo de dato primitivo int:
+El atributo del enum no necesariamente debe ser un `String`: puede ser `int`, `double`, `float`, etc., respetando el tipo de dato en el constructor y en el valor que se le pasa al declarar cada opción.
+
+Ejemplo con un tipo de dato primitivo `int`:
 
 ```java
 public enum Numeros {
-    UNO(1), 
-    DOS(2), 
-    TRES(3); 
+    UNO(1),
+    DOS(2),
+    TRES(3);
 
     // Atributo del enum
     private int valor;

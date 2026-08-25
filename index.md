@@ -4,17 +4,23 @@ layout: default
 
 Buenas! En este sitio vas a encontrar una pequeña guía para quienes inicien en el desarrollo de aplicaciones de consola en Java.
 
+Si es tu primera vez con el lenguaje, conviene arrancar por [Introducción a Java](./content/introduccion-a-java.html) y seguir el orden del índice: cada sección se apoya en las anteriores.
+
 # Contenido
 
 - [Introducción a Java](./content/introduccion-a-java.html)
   - ¿Qué es Java?
   - ¿Cómo funciona?
+  - Tu primer programa
+    - Compilar y ejecutar
+    - Imports
   - Programación orientada a objetos (POO)
 - [Conceptos básicos](./content/conceptos-basicos.html)
   - Introducción
   - Variables
     - Declaración
     - Variables y constantes
+    - Dónde viven las variables
   - Tipos de datos primitivos
     - Números enteros
       - byte, short, int y long
@@ -36,6 +42,8 @@ Buenas! En este sitio vas a encontrar una pequeña guía para quienes inicien en
   - Unarios y ternarios
   - De igualdad y relacionales
   - Lógicos
+  - Condicionales
+  - instanceof
 - [Estructuras](./content/estructuras.html)
   - De decisión
     - if - else
@@ -45,23 +53,34 @@ Buenas! En este sitio vas a encontrar una pequeña guía para quienes inicien en
     - do-while
     - for
 - [Métodos / funciones](./content/metodos.html)
-  - ¿Cómo definir un método/función? 
+  - ¿Cómo definir un método/función?
   - Parámetros
+  - Entradas y salidas de un método
   - Sobrecarga
 - [Clases](./content/clases.html)
   - Definición de clase personalizada
-  - Métodos y atributos estáticos
   - Modificadores de acceso
+  - Atributos
+  - Constructor
+  - Métodos
+    - Getters y Setters
   - Objetos
+  - Métodos y atributos estáticos
+  - Herencia
+  - Polimorfismo
   - Garbage collector
   - enum
 - [Entrada y salida por consola](./content/entrada-y-salida-por-consola.html)
-  - Scanner
-  - println
+  - Salida por consola (println)
+  - Entrada por consola (Scanner)
+  - Coloreando los mensajes en la consola
 - [Arrays](./content/arrays.html)
   - De una dimensión (unidimensional)
-  - De mas de una dimensión (multidimensional)
+  - De más de una dimensión (multidimensional)
   - Operaciones con arrays
+    - Arrays unidimensionales
+    - Arrays unidimensionales con objetos
+    - Arrays multidimensionales
 - [Clases Wrapper](./content/clases-wrapper.html)
   - Byte
   - Short
