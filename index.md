@@ -72,6 +72,7 @@ Si es tu primera vez con el lenguaje, conviene arrancar por [Introducción a Jav
   - enum
 - [Entrada y salida por consola](./content/entrada-y-salida-por-consola.html)
   - Salida por consola (println)
+    - Dar formato a la salida (printf y String.format)
   - Entrada por consola (Scanner)
   - Coloreando los mensajes en la consola
 - [Arrays](./content/arrays.html)

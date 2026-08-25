@@ -38,6 +38,89 @@ System.err.println("Mensaje de error.");
 
 > **Nota:** `System.out` y `System.err` pertenecen al paquete `java.lang`, así que no necesitan ningún `import`.
 
+### Dar formato a la salida
+
+Concatenar con `+` alcanza para mensajes simples, pero no nos deja controlar cómo se muestra el dato. Un precio, por ejemplo, se muestra con los decimales que tenga, no con los dos que esperaríamos:
+
+```java
+double precio = 1234.5;
+System.out.println("El precio es: " + precio); // Muestra: El precio es: 1234.5
+```
+
+Para eso contamos con `printf`, que recibe un **texto con marcadores** y los valores que deben ocupar esos marcadores, en orden:
+
+```java
+double precio = 1234.5;
+System.out.printf("El precio es: %.2f%n", precio); // Muestra: El precio es: 1234,50
+```
+
+El marcador `%.2f` indica "acá va un número con decimales, mostrado con 2 decimales", y `%n` indica un salto de línea. Cada marcador empieza con el caracter `%`.
+
+Los marcadores más usados son:
+
+| Marcador | Para qué sirve                                    |
+|:---------|:--------------------------------------------------|
+| %s       | Un texto (String)                                 |
+| %d       | Un número entero (byte, short, int, long)         |
+| %f       | Un número con decimales (float, double)           |
+| %.2f     | Un número con decimales, mostrando solo 2         |
+| %b       | Un valor de verdad (true o false)                 |
+| %c       | Un caracter                                       |
+| %n       | Un salto de línea                                 |
+| %%       | El caracter % (para mostrarlo tal cual)           |
+
+```java
+System.out.printf("%s tiene %d años y mide %.2f metros%n", "Ana", 25, 1.7);
+// Muestra: Ana tiene 25 años y mide 1,70 metros
+
+System.out.printf("El descuento es del %d%%%n", 50);
+// Muestra: El descuento es del 50%
+```
+
+> **Importante:** `printf` **no** agrega un salto de línea al final, igual que `print`. Por eso los ejemplos terminan en `%n`. Se puede usar `\n` en su lugar, pero `%n` es preferible porque usa el salto de línea que corresponde al sistema operativo.
+
+> **Importante:** la cantidad y el tipo de los valores deben coincidir con los marcadores. Si escribimos dos marcadores y pasamos un solo valor, o usamos `%d` con un número que tiene decimales, el programa se interrumpe al ejecutarse.
+
+#### Alinear en columnas
+
+Entre el `%` y la letra podemos indicar **cuántos caracteres de ancho** ocupa el valor. El número solo positivo alinea a la derecha; con un signo menos, a la izquierda. Esto sirve para mostrar datos en columnas prolijas:
+
+```java
+System.out.printf("%-10s %8s%n", "Producto", "Precio");
+System.out.printf("%-10s %8.2f%n", "Café", 1234.5);
+System.out.printf("%-10s %8.2f%n", "Té", 890.0);
+```
+
+Muestra:
+
+```
+Producto     Precio
+Café        1234,50
+Té           890,00
+```
+
+`%-10s` reserva 10 caracteres para el texto y lo alinea a la izquierda; `%8.2f` reserva 8 caracteres para el número, lo alinea a la derecha y le muestra 2 decimales.
+
+#### String.format
+
+`String.format` recibe exactamente los mismos marcadores que `printf`, con una diferencia: en lugar de mostrar el texto, lo **devuelve** como un `String`. Sirve cuando necesitamos guardar el texto formateado en una variable, en vez de mostrarlo enseguida.
+
+```java
+double precio = 1234.5;
+
+String texto = String.format("El precio es: %.2f", precio); // Devuelve "El precio es: 1234,50"
+System.out.println(texto);
+```
+
+Estas dos líneas hacen lo mismo:
+
+```java
+System.out.printf("El precio es: %.2f%n", precio);
+System.out.println(String.format("El precio es: %.2f", precio));
+```
+
+> **Nota:** el separador decimal que usa `%f` depende de la configuración regional de la computadora. En una configurada en español se muestra `1234,50` (con coma) y en una configurada en inglés, `1234.50` (con punto). Esto vale solo para lo que se **muestra**: en el código fuente el separador decimal sigue siendo siempre el punto (ver [números con decimales](./conceptos-basicos.html#números-con-decimales)).
+
 ## Entrada por consola (Scanner)
 
 Para el ingreso de información en programas de consola utilizaremos la clase `Scanner`. Al no pertenecer al paquete `java.lang`, **es obligatorio importarla** al principio del archivo (ver [imports](./introduccion-a-java.html#imports)).
