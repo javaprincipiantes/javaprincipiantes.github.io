@@ -210,6 +210,61 @@ if (edad > 25) {
 }
 ```
 
+## Precedencia de operadores
+
+Cuando una expresión combina varios operadores, no se resuelven de izquierda a derecha: cada operador tiene una **precedencia** que determina cuál se resuelve primero. Es la misma idea que en matemática, donde la multiplicación se resuelve antes que la suma.
+
+```java
+int resultado = 2 + 3 * 4; // 14, no 20: primero se resuelve 3 * 4 y después se suma 2
+```
+
+De mayor a menor precedencia, los operadores que vimos se agrupan así:
+
+| Precedencia | Operadores                  |
+|:------------|:----------------------------|
+| 1 (mayor)   | `()` paréntesis             |
+| 2           | `++` `--` `!` unarios       |
+| 3           | `*` `/` `%`                 |
+| 4           | `+` `-`                     |
+| 5           | `<` `<=` `>` `>=` `instanceof` |
+| 6           | `==` `!=`                   |
+| 7           | `&&`                        |
+| 8           | `\|\|`                      |
+| 9           | `?:` ternario               |
+| 10 (menor)  | `=` `+=` `-=` `*=` `/=` `%=` |
+
+Que los operadores relacionales tengan más precedencia que los lógicos es lo que permite escribir una condición sin paréntesis:
+
+```java
+int edad = 25;
+
+// Primero se resuelven las dos comparaciones y después el &&
+boolean estaEnLaFranja = edad > 20 && edad < 30;
+```
+
+Y que la asignación sea la de menor precedencia es lo que permite que toda la expresión de la derecha se resuelva antes de asignarse.
+
+Donde sí conviene prestar atención es al mezclar `&&` con `||`, porque `&&` se resuelve primero:
+
+```java
+boolean esFinDeSemana = false;
+boolean esFeriado = true;
+boolean hayTrabajoPendiente = true;
+
+// Se interpreta como: esFinDeSemana || (esFeriado && hayTrabajoPendiente)
+boolean resultado = esFinDeSemana || esFeriado && hayTrabajoPendiente; // true
+```
+
+> **Recomendación:** no hace falta memorizar la tabla. Ante la menor duda, **usá paréntesis**: no cambian el resultado cuando el orden ya era el correcto, y vuelven la intención explícita para quien lea el código.
+
+```java
+// La misma expresión, con la intención escrita de manera explícita
+boolean resultado = esFinDeSemana || (esFeriado && hayTrabajoPendiente);
+
+// Y si lo que queríamos era lo otro, los paréntesis son imprescindibles
+boolean otroResultado = (esFinDeSemana || esFeriado) && hayTrabajoPendiente;
+```
+
 ## Operador instanceof
 
 El operador `instanceof` nos permite identificar si un objeto es de una clase en específico (ver [objetos](./clases.html#objetos)). Devuelve un valor de verdad.

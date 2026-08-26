@@ -30,9 +30,9 @@ Cuando definimos un tipo de dato de retorno, como por ejemplo `int`, es obligato
 /* public -> modificador de acceso
  * int -> tipo de dato que devuelve el método
  * sumar -> nombre del método
- * int primerNumero, int segundoNumero -> parámetros (datos o valores) que recibe el método
+ * int primerNumero, int segundoNumero -> parámetros(datos o valores) que recibe el método
  */
-public int sumar (int primerNumero, int segundoNumero) {
+public int sumar(int primerNumero, int segundoNumero) {
     return primerNumero + segundoNumero; // Primero se resuelve la operación y luego se devuelve el resultado
 }
 ```
@@ -48,7 +48,7 @@ Método que no recibe parámetros (nada entre los paréntesis) y no devuelve un 
  * void -> no devuelve un dato o valor
  * mostrarMensajePorPantalla -> nombre del método
  */
-public void mostrarMensajePorPantalla () {
+public void mostrarMensajePorPantalla() {
     System.out.println("Hola");
 }
 ```
@@ -61,7 +61,7 @@ Método que muestra un mensaje por pantalla recibiendo un texto como parámetro.
  * mostrarMensajePorPantalla -> nombre del método
  * String mensaje -> parámetro con el dato o valor que debe mostrarse por pantalla
  */
-public void mostrarMensajePorPantalla (String mensaje) {
+public void mostrarMensajePorPantalla(String mensaje) {
     System.out.println(mensaje);
 }
 ```
@@ -75,7 +75,7 @@ Es posible declarar variables dentro de un método, con la salvedad de que solo 
 
 ```java
 // Método para sumar dos números
-public int sumar (int primerNumero, int segundoNumero) {
+public int sumar(int primerNumero, int segundoNumero) {
     return primerNumero + segundoNumero;
 }
 
@@ -84,7 +84,7 @@ public int sumar (int primerNumero, int segundoNumero) {
  * void -> no devuelve un dato o valor
  * mostrarResultadoDeSumaPorPantalla -> nombre del método
  */
-public void mostrarResultadoDeSumaPorPantalla () {
+public void mostrarResultadoDeSumaPorPantalla() {
     // Declaramos una variable local al método, llamada resultado
     int resultado = sumar(2, 3); // Invocación al método sumar, que calcula 2 + 3 y devuelve 5
 
@@ -104,7 +104,7 @@ Un parámetro, definido para un método (dentro de los paréntesis del método),
  * mostrarMensajePorPantalla -> nombre del método
  * String mensaje -> parámetro con el dato o valor que debe mostrarse por pantalla
  */
-public void mostrarMensajePorPantalla (String mensaje) {
+public void mostrarMensajePorPantalla(String mensaje) {
     System.out.println(mensaje);
 }
 ```
@@ -120,6 +120,37 @@ mostrarMensajePorPantalla(saludo); // Dentro del método, el parámetro mensaje 
 
 El orden y el tipo de los valores enviados deben coincidir con los de los parámetros declarados. Si el método espera `(String, int)`, no podemos invocarlo con `(int, String)`.
 
+### Qué recibe realmente un método
+
+Lo que el método recibe es una **copia** del valor, no la variable original. El parámetro es una variable nueva, que solo existe dentro del método: modificarla no afecta a la variable que usamos al invocarlo.
+
+```java
+public void intentarCambiar(int numero) {
+    numero = 100; // Cambia el parámetro, que es una copia
+}
+```
+
+```java
+int miNumero = 5;
+intentarCambiar(miNumero);
+System.out.println(miNumero); // Muestra 5, no 100
+```
+
+Esto vale para todos los tipos de dato primitivos. Si necesitamos que el método nos devuelva un valor modificado, hay que retornarlo con `return` y asignarlo:
+
+```java
+public int duplicar(int numero) {
+    return numero * 2;
+}
+```
+
+```java
+int miNumero = 5;
+miNumero = duplicar(miNumero); // Ahora miNumero vale 10
+```
+
+> **Nota:** cuando lo que se pasa es un objeto en lugar de un tipo primitivo, sigue copiándose el valor de la variable, pero ese valor es una referencia y eso cambia lo que el método puede hacer. Está explicado en [pasar objetos a un método](./clases.html#pasar-objetos-a-un-método), después de ver cómo funcionan los objetos.
+
 ## Entradas y salidas de un método
 
 * Concepto de una entrada, múltiples salidas
@@ -127,7 +158,7 @@ El orden y el tipo de los valores enviados deben coincidir con los de los parám
 Un método siempre tiene una entrada (el comienzo de las sentencias de su cuerpo) y puede tener más de una salida (más de un `return`). Por ejemplo, si incluimos un `if`.
 
 ```java
-public float dividir (float numerador, float denominador) {
+public float dividir(float numerador, float denominador) {
     if (denominador == 0) {
         // No es posible dividir por cero
         return 0;
@@ -140,7 +171,7 @@ public float dividir (float numerador, float denominador) {
 Otra forma de representar el mismo código con el mismo resultado:
 
 ```java
-public float dividir (float numerador, float denominador) {
+public float dividir(float numerador, float denominador) {
     if (denominador == 0) {
         // No es posible dividir por cero
         return 0;
@@ -157,7 +188,7 @@ En este segundo ejemplo no se incluyó el bloque `else`, ya que para este algori
 El mismo ejemplo puede representarse evitando tener más de un `return`.
 
 ```java
-public float dividir (float numerador, float denominador) {
+public float dividir(float numerador, float denominador) {
     float resultado = 0;
 
     if (denominador != 0) {
@@ -181,22 +212,22 @@ El nombre de los parámetros no forma parte de la firma, así que cambiarlo no a
  * void -> no devuelve un dato o valor
  * mostrarMensajePorPantalla -> nombre del método
  */
-public void mostrarMensajePorPantalla () {
+public void mostrarMensajePorPantalla() {
     System.out.println("Hola");
 }
 
 // Sobrecarga válida: mismo nombre, pero recibe un parámetro
-public void mostrarMensajePorPantalla (String mensaje) {
+public void mostrarMensajePorPantalla(String mensaje) {
     System.out.println(mensaje);
 }
 
 // Sobrecarga válida: recibe dos parámetros de tipo String
-public void mostrarMensajePorPantalla (String mensaje, String otroMensaje) {
+public void mostrarMensajePorPantalla(String mensaje, String otroMensaje) {
     System.out.println(mensaje + otroMensaje); // En presencia de un String, el operador + funciona como concatenador
 }
 
 // Sobrecarga válida: recibe un parámetro, pero de otro tipo de dato
-public void mostrarMensajePorPantalla (int numero) {
+public void mostrarMensajePorPantalla(int numero) {
     System.out.println(numero);
 }
 
@@ -204,7 +235,7 @@ public void mostrarMensajePorPantalla (int numero) {
  * parámetro String. El nombre del parámetro no diferencia la firma, así que esto es
  * un error de compilación.
  */
-public void mostrarMensajePorPantalla (String otroMensaje) {
+public void mostrarMensajePorPantalla(String otroMensaje) {
     System.out.println(otroMensaje);
 }
 ```

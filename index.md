@@ -30,12 +30,18 @@ Si es tu primera vez con el lenguaje, conviene arrancar por [Introducción a Jav
       - boolean
     - Caracteres
       - char
+  - Conversión de tipos
   - Literales
     - De números enteros
     - De números decimales
     - De caracteres y cadenas
   - Contador
   - Acumulador
+- [Entrada y salida por consola](./content/entrada-y-salida-por-consola.html)
+  - Salida por consola (println)
+    - Dar formato a la salida (printf y String.format)
+  - Entrada por consola (Scanner)
+  - Coloreando los mensajes en la consola
 - [Operadores](./content/operadores.html)
   - De asignación
   - Aritméticos
@@ -43,6 +49,7 @@ Si es tu primera vez con el lenguaje, conviene arrancar por [Introducción a Jav
   - De igualdad y relacionales
   - Lógicos
   - Condicionales
+  - Precedencia de operadores
   - instanceof
 - [Estructuras](./content/estructuras.html)
   - De decisión
@@ -52,9 +59,11 @@ Si es tu primera vez con el lenguaje, conviene arrancar por [Introducción a Jav
     - while
     - do-while
     - for
+    - break y continue
 - [Métodos / funciones](./content/metodos.html)
   - ¿Cómo definir un método/función?
   - Parámetros
+    - Qué recibe realmente un método
   - Entradas y salidas de un método
   - Sobrecarga
 - [Clases](./content/clases.html)
@@ -64,17 +73,14 @@ Si es tu primera vez con el lenguaje, conviene arrancar por [Introducción a Jav
   - Constructor
   - Métodos
     - Getters y Setters
+    - El método toString
   - Objetos
+    - Pasar objetos a un método
   - Métodos y atributos estáticos
   - Herencia
   - Polimorfismo
   - Garbage collector
   - enum
-- [Entrada y salida por consola](./content/entrada-y-salida-por-consola.html)
-  - Salida por consola (println)
-    - Dar formato a la salida (printf y String.format)
-  - Entrada por consola (Scanner)
-  - Coloreando los mensajes en la consola
 - [Arrays](./content/arrays.html)
   - De una dimensión (unidimensional)
   - De más de una dimensión (multidimensional)
@@ -97,3 +103,8 @@ Si es tu primera vez con el lenguaje, conviene arrancar por [Introducción a Jav
   - Random
   - Date
   - LocalDate
+- [Un programa completo](./content/programa-completo.html)
+  - La clase Perro
+  - El menú de la aplicación
+  - Agregar, listar y buscar
+  - Para seguir practicando

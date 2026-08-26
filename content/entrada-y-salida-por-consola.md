@@ -171,7 +171,7 @@ String texto = scanner.nextLine();
 ```java
 Scanner scanner = new Scanner(System.in);
 
-System.out.println("Ingrese un número entero (byte):");
+System.out.println("Ingrese un número entero(byte):");
 byte numero = scanner.nextByte();
 ```
 
@@ -180,7 +180,7 @@ byte numero = scanner.nextByte();
 ```java
 Scanner scanner = new Scanner(System.in);
 
-System.out.println("Ingrese un número entero (short):");
+System.out.println("Ingrese un número entero(short):");
 short numero = scanner.nextShort();
 ```
 
@@ -189,7 +189,7 @@ short numero = scanner.nextShort();
 ```java
 Scanner scanner = new Scanner(System.in);
 
-System.out.println("Ingrese un número entero (int):");
+System.out.println("Ingrese un número entero(int):");
 int numero = scanner.nextInt();
 ```
 
@@ -198,7 +198,7 @@ int numero = scanner.nextInt();
 ```java
 Scanner scanner = new Scanner(System.in);
 
-System.out.println("Ingrese un número entero (long):");
+System.out.println("Ingrese un número entero(long):");
 long numero = scanner.nextLong();
 ```
 
@@ -207,7 +207,7 @@ long numero = scanner.nextLong();
 ```java
 Scanner scanner = new Scanner(System.in);
 
-System.out.println("Ingrese un número con decimales (float):");
+System.out.println("Ingrese un número con decimales(float):");
 float numero = scanner.nextFloat();
 ```
 
@@ -216,7 +216,7 @@ float numero = scanner.nextFloat();
 ```java
 Scanner scanner = new Scanner(System.in);
 
-System.out.println("Ingrese un número con decimales (double):");
+System.out.println("Ingrese un número con decimales(double):");
 double numero = scanner.nextDouble();
 ```
 

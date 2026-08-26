@@ -69,11 +69,11 @@ public class Persona {
 
     private String nombre;
 
-    public Persona (String nombre) {
+    public Persona(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getNombre () {
+    public String getNombre() {
         return this.nombre;
     }
 }
@@ -90,7 +90,7 @@ Un constructor posee un modificador de acceso (generalmente `public`), lleva **e
 ```java
 // Considerando que la clase se llama Perro, definimos un constructor sin parámetros
 
-public Perro () {
+public Perro() {
     // Líneas de código del constructor
 }
 ```
@@ -101,17 +101,17 @@ Al igual que con los métodos, es posible tener más de un constructor (sobrecar
 
 ```java
 // Constructor que recibe un parámetro
-public Perro (String nombre) {
+public Perro(String nombre) {
     // Líneas de código del constructor
 }
 
 // Constructor que recibe dos parámetros
-public Perro (String nombre, int edad) {
+public Perro(String nombre, int edad) {
     // Líneas de código del constructor
 }
 
 // Constructor que además recibe un parámetro de una clase personalizada
-public Perro (String nombre, int edad, Persona duenio) {
+public Perro(String nombre, int edad, Persona duenio) {
     // Líneas de código del constructor
 }
 ```
@@ -129,7 +129,7 @@ public class Perro {
     private int edad;
     private Persona duenio;
 
-    public Perro (String nombre, int edad, Persona duenio) {
+    public Perro(String nombre, int edad, Persona duenio) {
         // Estas asignaciones no tienen efecto sobre los atributos
         nombre = nombre;
         edad = edad;
@@ -150,7 +150,7 @@ public class Perro {
     private int edad;
     private Persona duenio;
 
-    public Perro (String nombre, int edad, Persona duenio) {
+    public Perro(String nombre, int edad, Persona duenio) {
         // Estas asignaciones sí modifican los atributos, por incluir la palabra reservada this
         this.nombre = nombre;
         this.edad = edad;
@@ -173,21 +173,21 @@ public class Perro {
     private Persona duenio;
 
     // Constructores
-    public Perro () {
+    public Perro() {
         // Como no recibe parámetros, inicializamos los atributos con valores que nos sirvan
         this.nombre = "";
         this.edad = 0;
         this.duenio = null;
     }
 
-    public Perro (String nombre, int edad) {
+    public Perro(String nombre, int edad) {
         // Si recibimos parámetros, lo habitual es utilizarlos para inicializar los atributos
         this.nombre = nombre;
         this.edad = edad;
         this.duenio = null; // Si no recibimos un parámetro para algún atributo, podemos asignarle algo que nos sirva
     }
 
-    public Perro (String nombre, int edad, Persona duenio) {
+    public Perro(String nombre, int edad, Persona duenio) {
         // Este constructor recibe como parámetros todos los atributos de la clase Perro
         this.nombre = nombre;
         this.edad = edad;
@@ -207,7 +207,7 @@ Los métodos definidos como `public` serán invocados por los objetos creados a 
 
 ```java
     // Método que incrementa en 1 la edad del perro
-    public void cumplirAnios () {
+    public void cumplirAnios() {
         this.edad++;
     }
 ```
@@ -221,7 +221,7 @@ Continuando con el concepto de [encapsulamiento](./introduccion-a-java.html#enca
 Para obtener el contenido de un atributo debemos generar un método que nos devuelva ese dato:
 
 ```java
-    public String obtenerNombre () {
+    public String obtenerNombre() {
         return this.nombre;
     }
 ```
@@ -231,7 +231,7 @@ Definiendo un método no permitimos acceder directamente al atributo. Además, t
 Entonces, ¿de dónde viene el concepto de `Getter`? *Get* en inglés significa "obtener", y es habitual encontrarse con un método como:
 
 ```java
-    public String getNombre () {
+    public String getNombre() {
         return this.nombre;
     }
 ```
@@ -248,7 +248,7 @@ Puntos a tener en cuenta sobre un "Getter":
 Por su contraparte, podemos permitir que se cambie el contenido de un atributo:
 
 ```java
-    public void asignarNombre (String nombre) {
+    public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
 ```
@@ -256,7 +256,7 @@ Por su contraparte, podemos permitir que se cambie el contenido de un atributo:
 El método anterior es un "Setter". La palabra *set* debe comprenderse como "asignar". La nomenclatura habitual es análoga a la del "Getter": definimos el nombre del método como `setNombre`, donde "set" indica que asignaremos algo y "Nombre" indica a cuál atributo.
 
 ```java
-    public void setNombre (String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 ```
@@ -271,7 +271,7 @@ Si bien la validación de información suele ser previa a la invocación de un "
 
 ```java
     // Setter del atributo "edad", con una ligera validación
-    public void setEdad (int edad) {
+    public void setEdad(int edad) {
 
         if (edad > 0) {
             this.edad = edad;
@@ -290,7 +290,7 @@ No todo método es un "Getter" o un "Setter". El método `cumplirAnios` que vimo
 Podemos agregar los métodos que necesitemos, devuelvan o no el valor de un atributo:
 
 ```java
-    public String ladrar () {
+    public String ladrar() {
         return "Guau!"; // No devuelve un atributo, sino un literal String
     }
 ```
@@ -298,7 +298,7 @@ Podemos agregar los métodos que necesitemos, devuelvan o no el valor de un atri
 Si, por ejemplo, necesitamos mostrar todos los datos del perro, podemos definir un método como el siguiente:
 
 ```java
-    public String obtenerDatosDelPerro () {
+    public String obtenerDatosDelPerro() {
         String datosDelPerro = "Nombre: " + this.nombre + ", Edad: " + this.edad;
         return datosDelPerro;
     }
@@ -309,10 +309,49 @@ Acá declaramos una variable local al método (`datosDelPerro`), que solo puede 
 Una forma abreviada, que evita declarar la variable local, es devolver la concatenación directamente:
 
 ```java
-    public String obtenerDatosDelPerro () {
+    public String obtenerDatosDelPerro() {
         return "Nombre: " + this.nombre + ", Edad: " + this.edad;
     }
 ```
+
+### El método toString
+
+"Devolver los datos del objeto como texto" es una necesidad tan común que Java ya tiene un nombre estándar para ese método: `toString()`. Todas las clases lo tienen, aunque no lo escribamos, porque toda clase [hereda](#herencia) de `Object`.
+
+El problema es que la versión que viene por defecto no es útil. Si mostramos un objeto por pantalla sin haber escrito nuestro `toString()`, vemos algo así:
+
+```java
+    Perro miPerro = new Perro("Firulais", 3);
+    System.out.println(miPerro); // Muestra algo como: Perro@1b6d3586
+```
+
+Ese texto es el nombre de la clase y un número que identifica al objeto en memoria: no nos dice nada sobre el perro.
+
+La solución es escribir nuestro propio `toString()`. Es el mismo método que veníamos escribiendo como `obtenerDatosDelPerro`, solo que con el nombre que Java espera:
+
+```java
+    @Override
+    public String toString() {
+        return "Perro [nombre=" + this.nombre + ", edad=" + this.edad + "]";
+    }
+```
+
+Con eso, la misma línea de antes ahora muestra los datos del perro:
+
+```java
+    Perro miPerro = new Perro("Firulais", 3);
+    System.out.println(miPerro); // Muestra: Perro [nombre=Firulais, edad=3]
+```
+
+> **Nota:** el formato `Perro [nombre=..., edad=...]` es el que generan los IDE cuando les pedimos que escriban el `toString()` por nosotros (en Eclipse, con *Source > Generate toString()*). Conviene respetarlo: cualquiera que lea el código lo reconoce de inmediato.
+
+Puntos a tener en cuenta:
+
+* El método debe llamarse exactamente `toString`, ser `public`, no recibir parámetros y devolver un `String`. Si nos apartamos de esa firma, deja de ser el método que Java usa.
+* `System.out.println(miPerro)` y `"" + miPerro` invocan a `toString()` automáticamente. No hace falta escribir `miPerro.toString()`, aunque también es válido.
+* La anotación `@Override` no es obligatoria, pero conviene incluirla: le avisa al compilador que estamos reescribiendo un método que ya existe, y si nos equivocamos en el nombre o en los parámetros, nos marca el error. Se explica en [herencia](#herencia).
+
+De acá en adelante usamos `toString()` en lugar de `obtenerDatosDelPerro`.
 
 ### La clase completa
 
@@ -327,19 +366,19 @@ public class Perro {
     private Persona duenio;
 
     // Constructores
-    public Perro () {
+    public Perro() {
         this.nombre = "";
         this.edad = 0;
         this.duenio = null;
     }
 
-    public Perro (String nombre, int edad) {
+    public Perro(String nombre, int edad) {
         this.nombre = nombre;
         this.edad = edad;
         this.duenio = null;
     }
 
-    public Perro (String nombre, int edad, Persona duenio) {
+    public Perro(String nombre, int edad, Persona duenio) {
         this.nombre = nombre;
         this.edad = edad;
         this.duenio = duenio;
@@ -348,42 +387,43 @@ public class Perro {
     // Métodos
 
     // Getters
-    public String getNombre () {
+    public String getNombre() {
         return this.nombre;
     }
 
-    public int getEdad () {
+    public int getEdad() {
         return this.edad;
     }
 
-    public Persona getDuenio () {
+    public Persona getDuenio() {
         return this.duenio;
     }
 
     // Setters
-    public void setNombre (String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setEdad (int edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
-    public void setDuenio (Persona duenio) {
+    public void setDuenio(Persona duenio) {
         this.duenio = duenio;
     }
 
     // Comportamiento
-    public void cumplirAnios () {
+    public void cumplirAnios() {
         this.edad++;
     }
 
-    public String ladrar () {
+    public String ladrar() {
         return "Guau!";
     }
 
-    public String obtenerDatosDelPerro () {
-        return "Nombre: " + this.nombre + ", Edad: " + this.edad;
+    @Override
+    public String toString() {
+        return "Perro [nombre=" + this.nombre + ", edad=" + this.edad + "]";
     }
 
 }
@@ -473,6 +513,42 @@ Si ahora volvemos a obtener los nombres de cada objeto con su "Getter", cada uno
 
 > **Importante:** cada objeto o instancia posee las mismas características y el mismo comportamiento definidos en la clase `Perro`, pero **cada uno almacena sus propios datos**.
 
+### Pasar objetos a un método
+
+En [métodos](./metodos.html#qué-recibe-realmente-un-método) vimos que un método recibe una copia del valor, y que modificar un parámetro de tipo primitivo no afecta a la variable original.
+
+Con los objetos la regla es la misma —se copia el valor de la variable— pero hay que tener presente qué contiene esa variable: **no el objeto, sino la referencia al objeto**. La copia apunta al mismo objeto, con lo cual el método sí puede modificarlo.
+
+```java
+public void cambiarNombre(Perro perro) {
+    perro.setNombre("Cartucho"); // Modifica el objeto al que apunta la referencia
+}
+```
+
+```java
+Perro miPerro = new Perro("Firulais", 3);
+cambiarNombre(miPerro);
+System.out.println(miPerro.getNombre()); // Muestra "Cartucho": el objeto cambió
+```
+
+Ahora bien, si en lugar de modificar el objeto **reasignamos el parámetro**, solo estamos cambiando hacia dónde apunta la copia. La variable original sigue apuntando al objeto de siempre:
+
+```java
+public void intentarReemplazar(Perro perro) {
+    perro = new Perro("Laika", 1); // Solo cambia a dónde apunta la copia
+}
+```
+
+```java
+Perro miPerro = new Perro("Firulais", 3);
+intentarReemplazar(miPerro);
+System.out.println(miPerro.getNombre()); // Muestra "Firulais": la variable original no cambió
+```
+
+Resumiendo: un método puede **modificar** el objeto que recibe, pero no puede **reemplazarlo** por otro. Si necesitamos que lo reemplace, el método debe devolver el objeto nuevo con `return`.
+
+> **Nota:** un `String` es un objeto, pero al ser [inmutable](./clases-utiles.html#string) ningún método puede modificarlo. Por eso los String se comportan como si se pasaran por valor, igual que los tipos primitivos.
+
 ## Métodos y atributos estáticos
 
 Vimos que en una clase podemos definir atributos y métodos que serán parte de los objetos creados a partir de ella. ¿Y si necesitamos que un atributo o método sea común a todos los objetos, es decir, que le pertenezca a la clase y no a cada instancia?
@@ -485,29 +561,32 @@ Siendo que la palabra reservada `this` referencia al objeto actual, no debemos u
 public class Perro {
 
     // Atributo estático, perteneciente a la clase y compartido por todos los objetos
-    private static int identificador = 1;
+    private static int proximoId = 0;
 
     // Atributos de cada objeto
-    private int id;
+    private int identificador;
     private String nombre;
     private int edad;
     private Persona duenio;
 
-    public Perro () {
-        this.id = obtenerSiguienteIdentificador(); // Asignamos el siguiente identificador
+    public Perro() {
+        this.identificador = ++proximoId; // Primero incrementa y después asigna: el primer perro queda con el 1
         this.nombre = "";
         this.edad = 0;
         this.duenio = null;
     }
 
-    // Método estático perteneciente solo a la clase (no a los objetos creados)
-    private static int obtenerSiguienteIdentificador () {
-        return identificador++; // Devuelve el valor actual y después lo incrementa
+    public int getIdentificador() {
+        return this.identificador;
     }
 }
 ```
 
-En el ejemplo anterior, cada vez que se crea un objeto se le asigna un identificador correlativo: el primer perro tendrá id 1, el segundo id 2, el tercero id 3 y así sucesivamente. El atributo `identificador` es uno solo para toda la clase, mientras que `id` es distinto en cada objeto.
+Cada vez que se crea un objeto se le asigna un identificador correlativo: el primer perro tendrá el 1, el segundo el 2, el tercero el 3 y así sucesivamente.
+
+La clave está en la diferencia entre los dos atributos. `proximoId` es **estático**: hay uno solo para toda la clase y su valor sobrevive de un objeto al siguiente. `identificador` no lo es: cada perro tiene el suyo. El [pre incremento](./operadores.html#operadores-unarios-y-ternarios) `++proximoId` incrementa primero y asigna después, y por eso el primer perro recibe el 1 y no el 0.
+
+Notar también que no escribimos un `setIdentificador`: si existiera, cualquiera podría cambiar un identificador desde afuera y romper la correlatividad que la clase se encarga de garantizar.
 
 Los métodos estáticos se invocan usando el nombre de la clase, sin necesidad de crear ningún objeto. Es exactamente lo que hacemos cuando escribimos `Math.abs(-1)` o `Integer.parseInt("5")`.
 
@@ -528,24 +607,24 @@ public class Animal {
     protected String nombre;
     protected int edad;
 
-    public Animal (String nombre, int edad) {
+    public Animal(String nombre, int edad) {
         this.nombre = nombre;
         this.edad = edad;
     }
 
-    public String getNombre () {
+    public String getNombre() {
         return this.nombre;
     }
 
-    public int getEdad () {
+    public int getEdad() {
         return this.edad;
     }
 
-    public void cumplirAnios () {
+    public void cumplirAnios() {
         this.edad++;
     }
 
-    public String hacerRuido () {
+    public String hacerRuido() {
         return "...";
     }
 }
@@ -556,12 +635,12 @@ Ahora `Perro` y `Gato` pueden extender `Animal`:
 ```java
 public class Perro extends Animal {
 
-    public Perro (String nombre, int edad) {
+    public Perro(String nombre, int edad) {
         super(nombre, edad); // Invoca al constructor de la superclase
     }
 
     @Override
-    public String hacerRuido () {
+    public String hacerRuido() {
         return "Guau!";
     }
 }
@@ -570,12 +649,12 @@ public class Perro extends Animal {
 ```java
 public class Gato extends Animal {
 
-    public Gato (String nombre, int edad) {
+    public Gato(String nombre, int edad) {
         super(nombre, edad);
     }
 
     @Override
-    public String hacerRuido () {
+    public String hacerRuido() {
         return "Miau!";
     }
 }
@@ -710,7 +789,7 @@ public enum Colores {
     ROJO, AZUL, AMARILLO, BLANCO, NEGRO, AZUL_OSCURO;
 
     // Constructor del enum
-    Colores () {
+    Colores() {
 
     }
 }
@@ -736,7 +815,7 @@ public enum Colores {
     private String descripcion;
 
     // Constructor del enum que recibe un parámetro y lo asigna al atributo
-    Colores (String descripcion) {
+    Colores(String descripcion) {
         this.descripcion = descripcion;
     }
 }
@@ -757,11 +836,11 @@ public enum Colores {
 
     private String descripcion;
 
-    Colores (String descripcion) {
+    Colores(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public String getDescripcion () {
+    public String getDescripcion() {
         return this.descripcion;
     }
 }
@@ -803,11 +882,11 @@ public enum Numeros {
     private int valor;
 
     // Constructor del enum que recibe un parámetro y lo asigna al atributo
-    Numeros (int valor) {
+    Numeros(int valor) {
         this.valor = valor;
     }
 
-    public int getValor () {
+    public int getValor() {
         return this.valor;
     }
 }

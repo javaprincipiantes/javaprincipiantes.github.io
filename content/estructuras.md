@@ -325,4 +325,102 @@ for (int contador = 10; contador >= 1; contador--) {
 
 Para entender la sentencia `contador += 3` ver [acumulador](./conceptos-basicos.html#acumulador).
 
+### break y continue
+
+Las tres estructuras de iteración se controlan con su expresión, pero a veces necesitamos alterar el recorrido desde adentro del bucle. Para eso contamos con dos palabras reservadas.
+
+**`break`** corta el bucle por completo: la ejecución sigue en la primera sentencia posterior al bucle, sin importar que la expresión siga siendo verdadera.
+
+```java
+int[] numeros = {4, 8, 15, 16, 23, 42};
+int buscado = 15;
+int posicionEncontrada = -1;
+
+for (int indice = 0; indice < numeros.length; indice++) {
+
+    if (numeros[indice] == buscado) {
+        posicionEncontrada = indice;
+        break; // Ya lo encontramos: no tiene sentido seguir recorriendo el resto
+    }
+}
+
+System.out.println("Se encontró en la posición: " + posicionEncontrada); // 2
+```
+
+**`continue`** no corta el bucle: saltea el resto de la vuelta actual y pasa directamente a la siguiente.
+
+```java
+int[] numeros = {4, 7, 15, 16, 23, 42};
+int sumaDePares = 0;
+
+for (int indice = 0; indice < numeros.length; indice++) {
+
+    if (numeros[indice] % 2 != 0) {
+        continue; // Es impar: salteamos esta vuelta y seguimos con la siguiente
+    }
+
+    sumaDePares += numeros[indice];
+}
+
+System.out.println("La suma de los pares es: " + sumaDePares); // 102
+```
+
+Ese mismo ejemplo puede escribirse sin `continue`, invirtiendo la condición:
+
+```java
+for (int indice = 0; indice < numeros.length; indice++) {
+
+    if (numeros[indice] % 2 == 0) {
+        sumaDePares += numeros[indice];
+    }
+}
+```
+
+Las dos versiones son correctas. `continue` suele convenir cuando hay varias condiciones que descartan la vuelta y anidar los `if` volvería el código difícil de leer.
+
+> **Importante:** para **validar un dato ingresado por el usuario no usamos `break`**, sino el [do-while](#do-while), que es la estructura pensada para eso: la condición del `while` expresa por sí sola hasta cuándo hay que seguir pidiendo el dato, y el bucle se lee de arriba abajo sin depender de una salida escondida en el medio.
+
+```java
+Scanner scanner = new Scanner(System.in);
+int edad;
+
+do {
+    System.out.println("Ingrese una edad mayor a 0:");
+    edad = scanner.nextInt();
+
+    if (edad <= 0) {
+        System.out.println("La edad ingresada no es válida.");
+    }
+} while (edad <= 0); // La condición dice con claridad cuándo se repite
+```
+
+### La alternativa: una bandera en la condición
+
+Un recorrido que corta al encontrar algo también puede escribirse sin `break`, usando una variable de verdad (una **bandera**) como parte de la condición del `while`:
+
+```java
+int[] numeros = {4, 8, 15, 16, 23, 42};
+int buscado = 15;
+int posicionEncontrada = -1;
+int indice = 0;
+boolean encontrado = false;
+
+while (indice < numeros.length && !encontrado) {
+
+    if (numeros[indice] == buscado) {
+        posicionEncontrada = indice;
+        encontrado = true;
+    }
+    indice++;
+}
+```
+
+La condición dice dos cosas a la vez: "seguí mientras queden posiciones **y** mientras no lo hayas encontrado". Cuando la bandera cambia, el bucle termina solo.
+
+Esta forma suele preferirse sobre `break` porque toda la información sobre cuándo termina el bucle queda en un único lugar, la condición del `while`, en lugar de estar repartida entre la condición y una salida en el medio del bloque. Es la que se usa en el [programa completo](./programa-completo.html).
+
+> **Importante:** `break` y `continue` afectan **únicamente al bucle más interno** en el que están escritos. Si tenemos un `for` dentro de otro `for`, un `break` en el interno corta solo ese, y el externo sigue con su próxima vuelta.
+
+> **Nota:** el `break` del `switch` y el `break` de un bucle son la misma palabra reservada, pero se usan para cosas distintas: en el `switch` marca dónde termina un caso, y en un bucle lo corta. Si escribimos un `switch` dentro de un bucle, el `break` corta el `switch`, no el bucle.
+
 [Volver](../)

@@ -48,7 +48,7 @@ Las variables se declaran siguiendo este orden: `TipoDeDato nombreDeVariable;`
 /* Declaración de variable en Java
  * int -> tipo de dato
  * espacioParaNumeroVariable -> nombre de la variable
- * La declaración debe terminar con un punto y coma (;)
+ * La declaración debe terminar con un punto y coma(;)
  */
 
 int espacioParaNumeroVariable;
@@ -192,6 +192,71 @@ char letraANumero = 65;
 ```
 
 Las dos sentencias del ejemplo son equivalentes: ambas variables contienen el caracter `A`.
+
+## Conversión de tipos
+
+Cuando asignamos un dato de un tipo a una variable de otro tipo, Java tiene que convertirlo. A veces lo hace solo y a veces hay que pedírselo de manera explícita.
+
+### Conversión automática (de menor a mayor)
+
+Si el tipo de destino puede representar cualquier valor del tipo de origen, la conversión es automática y no perdemos información. El orden, de menor a mayor capacidad, es:
+
+`byte` → `short` → `int` → `long` → `float` → `double`
+
+```java
+int numeroEntero = 100;
+
+long numeroLargo = numeroEntero;    // Automático: un long puede representar cualquier int
+double numeroConDecimales = numeroEntero; // Automático: el contenido pasa a ser 100.0
+```
+
+El tipo `char` también se convierte automáticamente a `int` (y de ahí para arriba), porque un char en el fondo guarda el número que representa al caracter:
+
+```java
+char letra = 'A';
+int codigo = letra; // Automático: el contenido de codigo es 65
+```
+
+### Conversión explícita: el cast (de mayor a menor)
+
+En el sentido contrario no hay conversión automática, porque el dato **puede no entrar** en el tipo de destino. Java nos obliga a pedirla de manera explícita, escribiendo el tipo deseado entre paréntesis. A eso se lo llama *cast*.
+
+```java
+double numeroConDecimales = 120.35;
+
+int numeroEntero = numeroConDecimales;       // Error de compilación: hace falta un cast
+int numeroEnteroConCast = (int) numeroConDecimales; // Contenido: 120
+```
+
+Al hacer un cast asumimos la responsabilidad de la pérdida de información:
+
+```java
+// Los decimales se descartan, no se redondea
+int truncado = (int) 9.99; // Contenido: 9
+
+// Si el número no entra en el tipo de destino, el resultado no tiene sentido
+int numeroGrande = 300;
+byte numeroChico = (byte) numeroGrande; // Contenido: 44, porque 300 no entra en un byte
+```
+
+> **Importante:** el cast nunca redondea, siempre descarta los decimales. Para redondear hay que usar `Math.round()` (ver [clases útiles](./clases-utiles.html#redondeos)).
+
+### El caso de la división entre enteros
+
+La conversión ocurre **después** de resolver la operación, no antes. Por eso una división entre dos enteros da un resultado entero, aunque la asignemos a una variable con decimales:
+
+```java
+double resultado = 5 / 2; // Contenido: 2.0, no 2.5
+```
+
+Para que la división se resuelva con decimales, al menos uno de los operandos tiene que tener decimales:
+
+```java
+double resultado = 5.0 / 2;      // Contenido: 2.5
+double otroResultado = (double) 5 / 2; // Contenido: 2.5, convirtiendo el 5 antes de dividir
+```
+
+Está explicado en detalle en [operadores aritméticos](./operadores.html#operadores-aritméticos).
 
 ## Literales
 
