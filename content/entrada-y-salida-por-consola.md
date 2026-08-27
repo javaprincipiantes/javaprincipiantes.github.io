@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Entrada y salida por consola
 
 Cuando desarrollamos programas de consola, es posible mostrar información y permitir el ingreso de datos desde la consola provista por el [IDE](https://es.wikipedia.org/wiki/Entorno_de_desarrollo_integrado) (entorno de desarrollo integrado), o bien desde el programa ejecutado en el sistema operativo (en Windows [CMD](https://es.wikipedia.org/wiki/S%C3%ADmbolo_del_sistema_de_Windows), en Linux [Shell de Unix](https://es.wikipedia.org/wiki/Shell_de_Unix)).
@@ -347,5 +345,3 @@ String fondoAltaIntensidadBlanco = "\033[0;107m";
 ```
 
 > **Nota:** estas sentencias de código deben estar incluidas dentro de un método.
-
-[Volver](../)

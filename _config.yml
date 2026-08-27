@@ -1,8 +1,8 @@
 title: Java para principiantes
 description: Humilde guía para comenzar a desarrollar aplicaciones de consola en Java sin muchos problemas
-show_downloads: false
-show_github_repo: false
 lang: es
 google_analytics:
 google_gtm: G-01M2272H7P
-theme: jekyll-theme-hacker
+
+plugins:
+  - jekyll-seo-tag

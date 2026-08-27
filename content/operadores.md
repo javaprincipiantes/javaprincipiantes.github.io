@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Operadores
 
 Los operadores son símbolos que nos permiten realizar diversas operaciones, así como también manipular los datos en las variables.
@@ -274,5 +272,3 @@ String nombre = "Firulais";
 
 boolean esUnString = nombre instanceof String; // true
 ```
-
-[Volver](../)

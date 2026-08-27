@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Un programa completo
 
 Hasta acá vimos cada tema por separado. En esta sección armamos un programa de consola que los usa todos juntos: una veterinaria que permite registrar perros, modificarlos, filtrarlos y ver un resumen.
@@ -602,5 +600,3 @@ Sobre este mismo programa se pueden agregar opciones al menú. Cada una es un m�
 * Una opción que muestre el perro más joven, con la lógica del mínimo.
 * Una opción que muestre los perros ordenados por edad. Requiere recorrer el array comparando de a pares e intercambiar posiciones con una variable auxiliar.
 * Una opción para eliminar un perro. Es la más interesante: hay que decidir qué hacer con el `null` que queda en el medio del array.
-
-[Volver](../)

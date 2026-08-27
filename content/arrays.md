@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Arrays
 
 Un array es una estructura que permite almacenar varios elementos del mismo tipo de dato, ya sea primitivo o de alguna clase. Cuando trabajamos con arrays debemos definir su tamaño, es decir, la cantidad de elementos que puede contener. **En Java ese tamaño no se puede cambiar durante la ejecución.**
@@ -336,5 +334,3 @@ for (int fila = 0; fila < matriz.length; fila++) {
 
 System.out.println("La suma de todos los elementos es: " + acumulador);
 ```
-
-[Volver](../)

@@ -1,0 +1,22 @@
+- title: Introducción a Java
+  url: /content/introduccion-a-java.html
+- title: Conceptos básicos
+  url: /content/conceptos-basicos.html
+- title: Entrada y salida por consola
+  url: /content/entrada-y-salida-por-consola.html
+- title: Operadores
+  url: /content/operadores.html
+- title: Estructuras
+  url: /content/estructuras.html
+- title: Métodos / funciones
+  url: /content/metodos.html
+- title: Clases
+  url: /content/clases.html
+- title: Arrays
+  url: /content/arrays.html
+- title: Clases Wrapper
+  url: /content/clases-wrapper.html
+- title: Clases útiles
+  url: /content/clases-utiles.html
+- title: Un programa completo
+  url: /content/programa-completo.html

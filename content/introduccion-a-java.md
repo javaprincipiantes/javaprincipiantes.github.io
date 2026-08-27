@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Introducción a Java
 
 ## ¿Qué es Java?
@@ -119,5 +117,3 @@ Posibilidad de enviar mensajes sintácticamente iguales a objetos de tipos disti
 Establece una jerarquía que nos permite centralizar características (atributos o datos) o comportamiento (métodos o acciones) en un sitio más general, para luego extenderlos en elementos más específicos.
 
 > **Nota:** los cuatro pilares se ponen en práctica en la sección de [clases](./clases.html).
-
-[Volver](../)

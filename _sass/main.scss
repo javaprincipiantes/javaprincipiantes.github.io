@@ -1,0 +1,333 @@
+@import "paleta";
+@import "syntax";
+
+/* Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Cabecera
+   ========================================================================== */
+
+.site-header {
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border);
+  padding: 1.75rem 0;
+  margin-bottom: 2.5rem;
+}
+
+.site-header__brand {
+  display: inline-block;
+  color: var(--heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.site-header__brand:hover,
+.site-header__brand:focus {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-header__tagline {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 44rem;
+}
+
+/* Grilla: navegacion + contenido
+   ========================================================================== */
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+  padding-bottom: 4rem;
+}
+
+/* En pantallas angostas la navegacion pasa debajo del contenido: el indice
+   completo ya vive en la portada y no tiene que empujar el texto hacia abajo. */
+.site-content {
+  order: 1;
+  min-width: 0;
+}
+
+.site-nav {
+  order: 2;
+  min-width: 0;
+}
+
+@media (min-width: 60rem) {
+  .layout {
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  }
+
+  .site-nav {
+    order: 0;
+    position: sticky;
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+  }
+}
+
+/* Navegacion
+   ========================================================================== */
+
+.site-nav__heading {
+  margin: 0 0 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+.site-nav__item {
+  border-bottom: 1px solid var(--border);
+}
+
+.site-nav__link {
+  display: block;
+  padding: 0.55rem 0.75rem;
+  border-left: 3px solid transparent;
+  color: var(--text-muted);
+  font-size: 0.925rem;
+  line-height: 1.4;
+}
+
+.site-nav__link:hover,
+.site-nav__link:focus {
+  background: var(--bg-subtle);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-nav__link--current {
+  border-left-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Contenido
+   ========================================================================== */
+
+.site-content h1,
+.site-content h2,
+.site-content h3,
+.site-content h4,
+.site-content h5,
+.site-content h6 {
+  color: var(--heading);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin: 2.5rem 0 1rem;
+}
+
+.site-content > h1:first-child,
+.site-content > h2:first-child {
+  margin-top: 0;
+}
+
+.site-content h1 {
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-content h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-content h3 { font-size: 1.25rem; }
+.site-content h4 { font-size: 1.075rem; }
+.site-content h5 { font-size: 1rem; }
+
+.site-content h6 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.site-content p,
+.site-content ul,
+.site-content ol {
+  margin: 0 0 1.1rem;
+}
+
+.site-content li {
+  margin-bottom: 0.35rem;
+}
+
+.site-content li::marker {
+  color: var(--border-strong);
+}
+
+.site-content img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+}
+
+.site-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.1rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+}
+
+.site-content blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.site-content hr {
+  height: 0;
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+/* Tablas
+   ========================================================================== */
+
+.site-content table {
+  display: block;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.site-content th,
+.site-content td {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.site-content th {
+  background: var(--bg-subtle);
+  color: var(--heading);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Codigo
+   ========================================================================== */
+
+pre,
+code {
+  font-family: var(--font-mono);
+}
+
+code {
+  font-size: 0.875em;
+}
+
+/* Codigo dentro de un parrafo: `Scanner`, `int`, etc. */
+code.highlighter-rouge {
+  padding: 0.15em 0.35em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-code);
+  color: var(--code-inline);
+}
+
+a code.highlighter-rouge {
+  color: inherit;
+}
+
+.site-content pre {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-code);
+  line-height: 1.55;
+  overflow-x: auto;
+}
+
+.site-content pre > code {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.9rem;
+}
+
+.highlighter-rouge > .highlight {
+  margin: 0;
+}
+
+/* Pie
+   ========================================================================== */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-subtle);
+  padding: 1.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.site-footer p {
+  margin: 0;
+}

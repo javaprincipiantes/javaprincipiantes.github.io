@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Métodos / funciones
 
 Los métodos son un conjunto de sentencias o instrucciones ordenadas y relacionadas de manera específica ([algoritmo](https://es.wikipedia.org/wiki/Algoritmo)) con el fin de resolver un problema.
@@ -241,5 +239,3 @@ public void mostrarMensajePorPantalla(String otroMensaje) {
 ```
 
 > **Nota:** el tipo de dato de retorno tampoco forma parte de la firma. Dos métodos que solo se diferencien en lo que devuelven no son una sobrecarga válida.
-
-[Volver](../)

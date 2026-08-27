@@ -1,0 +1,31 @@
+// Coloreado de Rouge. Los nombres de clase son los que emite Rouge; los colores
+// salen de la paleta para que sigan al modo claro/oscuro.
+
+.highlight {
+  color: var(--syntax-text);
+
+  table td { padding: 5px; }
+  table pre { margin: 0; }
+
+  .w { color: var(--syntax-text); }
+  .err {
+    color: var(--syntax-error-fg);
+    background-color: var(--syntax-error-bg);
+  }
+  .c, .cd, .cm, .c1, .cs { color: var(--syntax-comment); font-style: italic; }
+  .cp { color: var(--syntax-operator); }
+  .o, .ow { color: var(--syntax-operator); }
+  .p, .pi { color: var(--syntax-text); }
+  .gi { color: var(--syntax-string); }
+  .gd { color: var(--syntax-error-bg); }
+  .gh { color: var(--syntax-attribute); font-weight: bold; }
+  .k, .kn, .kp, .kr, .kv { color: var(--syntax-keyword); }
+  .kc, .kt, .kd { color: var(--syntax-type); }
+  .s, .sb, .sc, .sd, .s2, .sh, .sx, .s1, .ss { color: var(--syntax-string); }
+  .sr { color: var(--syntax-string); }
+  .si, .se { color: var(--syntax-escape); }
+  .nt, .nn, .nc, .no { color: var(--syntax-name); }
+  .na { color: var(--syntax-attribute); }
+  .nf { color: var(--syntax-attribute); }
+  .m, .mf, .mh, .mi, .il, .mo, .mb, .mx { color: var(--syntax-number); }
+}

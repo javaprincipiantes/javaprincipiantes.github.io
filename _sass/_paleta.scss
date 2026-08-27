@@ -1,0 +1,76 @@
+// Paleta del sitio. Todos los colores viven aca como custom properties para que
+// el modo oscuro sea una unica redefinicion y no una duplicacion de reglas.
+
+:root {
+  --font-sans: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --sidebar-width: 15rem;
+  --radius: 6px;
+
+  --bg: #ffffff;
+  --bg-subtle: #f4f7fb;
+  --bg-code: #f6f8fa;
+  --bg-header: #ffffff;
+
+  --text: #1f2933;
+  --text-muted: #5b6b7c;
+  --heading: #10233c;
+
+  --border: #dbe2ea;
+  --border-strong: #c3ced9;
+
+  --accent: #1d63d1;
+  --accent-hover: #17509f;
+  --accent-soft: #e7effc;
+
+  --code-inline: #9b3d8f;
+
+  --syntax-text: #24292f;
+  --syntax-comment: #6a737d;
+  --syntax-keyword: #b4308c;
+  --syntax-type: #0f6ab4;
+  --syntax-string: #0a7a4a;
+  --syntax-number: #1d63d1;
+  --syntax-name: #6f42c1;
+  --syntax-attribute: #005a9e;
+  --syntax-operator: #944100;
+  --syntax-escape: #8f5536;
+  --syntax-error-fg: #ffffff;
+  --syntax-error-bg: #ac4142;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1729;
+    --bg-subtle: #16203a;
+    --bg-code: #0c1424;
+    --bg-header: #131d33;
+
+    --text: #dce5f0;
+    --text-muted: #93a3b8;
+    --heading: #f1f5f9;
+
+    --border: #263450;
+    --border-strong: #35476b;
+
+    --accent: #7fb2f7;
+    --accent-hover: #a6cbff;
+    --accent-soft: #1b2b4a;
+
+    --code-inline: #e39ad8;
+
+    --syntax-text: #dce5f0;
+    --syntax-comment: #7c8ba1;
+    --syntax-keyword: #e39ad8;
+    --syntax-type: #6fb6e8;
+    --syntax-string: #7fd1a4;
+    --syntax-number: #9ec5fe;
+    --syntax-name: #c3aef5;
+    --syntax-attribute: #85c0e8;
+    --syntax-operator: #e3b774;
+    --syntax-escape: #d9a06a;
+    --syntax-error-fg: #0f1729;
+    --syntax-error-bg: #e08a8b;
+  }
+}

@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Estructuras
 
 Como muchos lenguajes de programación, Java nos provee de ciertas estructuras definidas que nos permiten realizar distintas tareas. Estas estructuras poseen sus propias palabras reservadas, que utilizaremos para definirlas y utilizarlas.
@@ -422,5 +420,3 @@ Esta forma suele preferirse sobre `break` porque toda la información sobre cuá
 > **Importante:** `break` y `continue` afectan **únicamente al bucle más interno** en el que están escritos. Si tenemos un `for` dentro de otro `for`, un `break` en el interno corta solo ese, y el externo sigue con su próxima vuelta.
 
 > **Nota:** el `break` del `switch` y el `break` de un bucle son la misma palabra reservada, pero se usan para cosas distintas: en el `switch` marca dónde termina un caso, y en un bucle lo corta. Si escribimos un `switch` dentro de un bucle, el `break` corta el `switch`, no el bucle.
-
-[Volver](../)

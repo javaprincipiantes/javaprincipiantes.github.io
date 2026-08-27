@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Clases
 
 Las clases son el principal elemento para representar un elemento de la realidad en código ([abstracción](https://es.wikipedia.org/wiki/Abstracci%C3%B3n_(inform%C3%A1tica)) de POO). Definen las características (atributos) y el comportamiento (métodos) que poseerán todos los objetos creados a partir de la clase que definimos.
@@ -891,5 +889,3 @@ public enum Numeros {
     }
 }
 ```
-
-[Volver](../)

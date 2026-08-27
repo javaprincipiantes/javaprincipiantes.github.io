@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Clases Wrapper (Envoltorio)
 
 Para cada tipo de dato primitivo existe una clase Wrapper (o envoltorio) que agrega, sobre ese tipo de dato, métodos de uso común: convertirlo a otros tipos, pasarlo a texto, obtener sus valores máximo y mínimo. Al ser clases, los Wrappers nos permiten tratar a un tipo de dato primitivo como si fuera un objeto.
@@ -279,5 +277,3 @@ existe = Boolean.parseBoolean(existeComoString); // Devuelve el contenido de la 
 ```
 
 > **Importante:** al ser objetos, dos variables Wrapper deben compararse con `equals()` y no con `==`, tal como se explica en [operadores de igualdad](./operadores.html#operadores-de-igualdad-y-relacionales).
-
-[Volver](../)

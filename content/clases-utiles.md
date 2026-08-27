@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Clases útiles
 
 En esta sección se describen algunos métodos y constantes estáticas que ayudan con el desarrollo de ciertos algoritmos.
@@ -321,5 +319,3 @@ LocalDateTime fechaYHora = LocalDateTime.now();  // Por ejemplo: 2026-08-25T19:3
 
 LocalDateTime unMomento = LocalDateTime.of(2026, 8, 25, 19, 30); // año, mes, día, hora y minutos
 ```
-
-[Volver](../)

@@ -2,8 +2,6 @@
 layout: default
 ---
 
-[Volver](../)
-
 # Conceptos básicos
 
 ## Introducción
@@ -358,5 +356,3 @@ numero *= 2; // Equivale a: numero = numero * 2. El nuevo valor es 20
 numero /= 2; // Equivale a: numero = numero / 2. El nuevo valor es 10
 numero %= 3; // Equivale a: numero = numero % 3. El nuevo valor es 1
 ```
-
-[Volver](../)
