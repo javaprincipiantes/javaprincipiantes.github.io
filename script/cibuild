@@ -3,7 +3,11 @@
 set -e
 
 bundle exec jekyll build
-bundle exec htmlproofer ./_site --check-html --check-sri
+# Se excluyen: googletagmanager (Google no publica un hash de integridad para gtag.js,
+# que ademas cambia) y stackoverflow/baeldung (responden 403 a peticiones automaticas,
+# aunque los enlaces funcionan en un navegador).
+bundle exec htmlproofer ./_site --check-html --check-sri \
+  --url-ignore "/googletagmanager.com/,/stackoverflow.com/,/baeldung.com/"
 bundle exec rubocop -D --config .rubocop.yml
 bundle exec script/validate-html
 gem build jekyll-theme-hacker.gemspec

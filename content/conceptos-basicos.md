@@ -30,7 +30,7 @@ Para comenzar con el lenguaje, debemos tener presentes los siguientes conceptos:
 
 * Es posible comentar código que podría ejecutarse. El código comentado no será tenido en cuenta a la hora de ejecutar el programa.
 
-* Resulta necesario realizar la [configuración de las variables de entorno](https://www.java.com/es/download/help/path_es.html) para que Java pueda ejecutarse correctamente.
+* Resulta necesario realizar la [configuración de las variables de entorno](https://www.java.com/es/download/help/path.html) para que Java pueda ejecutarse correctamente.
 
 * Si bien es posible desarrollar un programa en Java con un editor de texto, es recomendable utilizar un [IDE](https://es.wikipedia.org/wiki/Entorno_de_desarrollo_integrado) (entorno de desarrollo integrado). Algunos de los IDE más utilizados son [Eclipse](https://www.eclipse.org/downloads/), [VS Code](https://code.visualstudio.com/Download) o [IntelliJ Idea](https://www.jetbrains.com/es-es/idea/download/), entre otros. Siempre es necesario revisar la versión de Java instalada en el sistema operativo para que el IDE pueda ejecutarse correctamente.
 
